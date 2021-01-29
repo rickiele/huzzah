@@ -10,25 +10,27 @@ export const Huzzah = () => (
   
   <>
   <h1>Huzzah</h1>
-    <Route
-      render={() => {
-        if (localStorage.getItem("huzzah_user")) {
-          return (
-            <>
-              <ApplicationViews />
-            </>
-          );
-        } else {
-          return <Redirect to="/login" />;
-        }
-      }}
-    />
+  <div className="huzzah__container">
+      <Route
+        render={() => {
+          if (localStorage.getItem("huzzah_user")) {
+            return (
+              <>
+                <ApplicationViews />
+              </>
+            );
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+    </div>
 
-    <Route path="/login">
-      <Login />
-    </Route>
-    <Route path="/register">
-      <Register />
-    </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/register">
+        <Register />
+      </Route>
   </>
 );
