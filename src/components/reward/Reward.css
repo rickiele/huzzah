@@ -1,0 +1,20 @@
+.rewards {
+  border: 2px solid black;
+  margin: 1em;
+}
+
+.reward {
+  display: flex;
+  border-radius: 0.5em;
+  background-color: #D9EAFF;
+  margin: 1.5em;
+  padding: 1.5em;
+}
+
+.rewards__addRewardBtn{
+  float: right;
+}
+
+.rewards__addRewardContainer {
+  margin: 2em;
+}

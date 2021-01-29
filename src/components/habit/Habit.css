@@ -1,0 +1,32 @@
+.habits {
+  border: 2px solid black;
+  margin: 1em;
+}
+
+.habit {
+    display: flex;
+    border-radius: 0.5em;
+    background-color: #D9EAFF;
+    margin: 1.5em;
+    padding: 1.5em;
+}
+
+.habit__left {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 4;
+}
+
+.habit__right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.habits__addHabitBtn{
+  float: right;
+}
+
+.habits__addHabitContainer {
+  margin: 2em;
+}
