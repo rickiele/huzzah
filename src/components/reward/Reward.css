@@ -16,11 +16,6 @@
   float: right;
 }
 
-.rewards__addRewardContainer, .rewards__sayHiToUser {
-  margin: 2em;
-}
-
-
-.rewards__sayHiToUser-Name {
-  font-size: 15px;
+.reward__deleteRewardBtn {
+  float: right;
 }
