@@ -1,6 +1,7 @@
 .habits {
   border: 2px solid black;
   margin: 1em;
+  flex-grow: 6;
 }
 
 .habit {
@@ -13,14 +14,12 @@
 
 .habit__left {
   display: flex;
-  flex-direction: column;
-  flex-grow: 4;
 }
 
 .habit__right {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  justify-content: center;
 }
 
 .habits__addHabitBtn{
@@ -29,4 +28,8 @@
 
 .habits__addHabitContainer {
   margin: 2em;
+}
+
+.habit__deleteHabitBtn{
+  float: right;
 }

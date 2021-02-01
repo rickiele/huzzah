@@ -57,3 +57,7 @@ address {
 body {
   background-color: #FFFDFE;
 }
+
+.huzzah__container {
+  display: flex;
+}
