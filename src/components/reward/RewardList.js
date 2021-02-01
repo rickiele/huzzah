@@ -1,4 +1,6 @@
 import React, { useContext, useEffect } from "react"
+import { Container, Button, Col, Row } from "react-bootstrap"
+import "bootstrap/dist/css/bootstrap.min.css"
 import { useHistory } from "react-router-dom" 
 import { RewardContext } from "./RewardProvider"
 import { RewardCard } from "./RewardCard"
@@ -18,29 +20,30 @@ export const RewardList = () => {
   const history = useHistory()
 
   return (
-    <div className="rewards">
-		{/* Say hi to the user */}
-		<div className="rewards__sayHiToUser">
-			<h1 className="rewards__sayHiToUser-Name"> Hello, 
-				{
-					users.map(user => {
-					return <UserCard key={user.id} user={user} />
-					})
-				}
-			</h1>
-		</div>
-      <div className="rewards__addRewardContainer">
-          <button className="rewards__addRewardBtn" onClick={() => {history.push("/rewards/create")}}>Add Reward</button>
+    <Container className="rewards">
+      <Row className="rewards__sayHiToUser-Name">
+          {/* Say hi to the logged in user */}
+          <h1> Hello, {
+              users.map(user => {
+              return <UserCard key={user.id} user={user} />
+              })
+            }
+          </h1>
+      </Row>
+      <Row className="rewards__addRewardContainer">
+        <Col>
+          <Button className="rewards__addRewardBtn" onClick={() => {history.push("/rewards/create")}}>Add Reward</Button>
           <h2>Rewards</h2>
-      </div>
+            {/* Reward Cards are being rendered here*/}
+            {
+              rewards.map(reward => {
+                return <RewardCard key={reward.id} reward={reward} />
+              })
+            }
+        </Col>
+      </Row>
 
-      {/* Reward Cards are being rendered here*/}
-      {
-        rewards.map(reward => {
-          return <RewardCard key={reward.id} reward={reward} />
-        })
-      }
-
-    </div>
+     
+    </Container>
   )
 }
