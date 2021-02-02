@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "./Reward.css"
 
 export const RewardCard = ({ reward }) => (
-	<Card className="rewards mb-3 " style={{ color: "#000"}}>
+	<Card className="reward mb-3 " style={{ color: "#000"}}>
 		<Row>
 			<Col>
 				<Card.Body>

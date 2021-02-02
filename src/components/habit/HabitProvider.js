@@ -24,9 +24,33 @@ export const HabitProvider = (props) => {
         .then(getHabits)
     }
 
+    const getHabitById = (id) => {
+        return fetch(`http://localhost:8088/habits/${id}?_expand=user`)
+            .then(res => res.json())
+    }
+
+    const deleteHabit = habitId => {
+        return fetch(`http://localhost:8088/habits/${habitId}`, {
+            method: "DELETE"
+        })
+        .then(getHabits)
+      }
+
+    const updateHabit = habit => {
+      return fetch(`http://localhost:8088/habits/${habit.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(habit)
+      })
+        .then(getHabits)
+    }
+    
+
     return (
         <HabitContext.Provider value={{
-            habits, getHabits, addHabit
+            habits, getHabits, addHabit, getHabitById, deleteHabit, updateHabit
         }}>
             {props.children}
         </HabitContext.Provider>

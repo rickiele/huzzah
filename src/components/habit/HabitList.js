@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from "react-router-dom" 
 import { HabitContext } from "./HabitProvider"
 import { HabitCard } from "./HabitCard"
@@ -14,6 +14,16 @@ export const HabitList = () => {
   }, [])
 
   const history = useHistory()
+
+  // const [show, setShow] = useState(false);
+
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
+
+  // const [show, setShow] = useState(false)
+  // const toggleDialog = () => {
+  //   setModalShow(!show)
+  // }
 
   return (
     <Container className="habits">
@@ -34,3 +44,5 @@ export const HabitList = () => {
     </Container>
   )
 }
+
+// Modal in this one - 
