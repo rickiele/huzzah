@@ -2,11 +2,14 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { Button, Card, Col, Row } from "react-bootstrap"
+import { HabitContext } from "./HabitProvider"
 import { HabitProgress } from "./HabitProgress"
+import { HabitEditModal } from './HabitEditModal'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./Habit.css"
 
 export const HabitCard = ({ habit }) => (
+
     <Card className="habits mb-3 " style={{ color: "#000"}}>
 			<Row>
 
@@ -23,15 +26,12 @@ export const HabitCard = ({ habit }) => (
 					<Button className="habit__trackHabitBtn">Track Habit</Button>
 				</Col>
 				<Col className="">
-					<Link to={`/habits/${habit.id}`}>
-						<Button className="habit__editHabitBtn">
-							Edit Habit
-						</Button>
-					</Link>
+					<HabitEditModal key={habit.id} habit={habit}/>
 				</Col>
 
 			</Row>
   	</Card>
 )
 
+					// <Link to={`/habits/${habit.id}`}>
 // 	You need an onclick event for the button

@@ -2,12 +2,11 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { HabitList } from "./habit/HabitList"
 import { HabitProvider } from "./habit/HabitProvider"
-import { HabitAddModal } from "./habit/HabitAddModal"
 import { HabitDetail } from "./habit/HabitDetails"
 import { UserProvider } from "./user/UserProvider"
 import { RewardProvider } from "./reward/RewardProvider"
 import { RewardList } from "./reward/RewardList"
-
+import { HabitEditModal } from "./habit/HabitEditModal"
 
 
 export const ApplicationViews = () => {
