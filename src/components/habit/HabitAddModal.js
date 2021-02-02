@@ -1,42 +1,49 @@
 import React from "react"
-import { Modal, Button } from "react-bootstrap"
-import { useState, useEffect } from "react"
+import { Modal, Button, Form } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./Habit.css"
 
-export const HabitAddModal = ({showModal, setShowModal, handleClose, habit}) => (
-  <> 
-    {showModal ? 
-        <Modal.Dialog>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal title</Modal.Title>
-          </Modal.Header>
-        
-          <Modal.Body>
-            <p>Modal body text goes here.</p>
-          </Modal.Body>
-        
-          <Modal.Footer>
-            <Button variant="secondary">Close</Button>
-            <Button variant="primary">Save changes</Button>
-          </Modal.Footer>
-        </Modal.Dialog>
-  : null}
-  </>
-)
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Add A Habit
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Habit Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter habit name here" />
+          </Form.Group>
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Save Habit</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
+export const HabitAddModal = () => {
+  const [modalShow, setModalShow] = React.useState(false);
 
-{/* <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add Modal</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
+  return (
+    <>
+      <Button variant="primary" onClick={() => setModalShow(true)} className="habits__addHabitBtn">
+        Add Habit
+      </Button>
+
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+    </>
+  );
+}
