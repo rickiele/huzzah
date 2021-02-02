@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from "react-router-dom" 
 import { HabitContext } from "./HabitProvider"
 import { HabitCard } from "./HabitCard"
+import { HabitAddModal } from "./HabitAddModal"
 import "./Habit.css"
-import { Container, Button, Col } from "react-bootstrap"
+import { Modal, Container, Button, Col } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 export const HabitList = () => {
@@ -15,12 +16,11 @@ export const HabitList = () => {
 
   const history = useHistory()
 
+  
   return (
     <Container className="habits">
         <div className="habits__addHabitContainer">
-          <Button className="habits__addHabitBtn" onClick={() => 
-            {history.push("/habits/create")}}>Add Habit
-          </Button>
+          <HabitAddModal />
           <h2>Habits</h2>
         </div>
         <Col>
@@ -32,5 +32,10 @@ export const HabitList = () => {
           }
         </Col>
     </Container>
+    
   )
 }
+
+
+
+// Modal in this one - 
