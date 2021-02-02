@@ -1,12 +1,13 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { HabitList } from "./habit/HabitList"
+import { HabitList, App } from "./habit/HabitList"
 import { HabitProvider } from "./habit/HabitProvider"
 import { HabitModal } from "./habit/HabitEditModal"
 import { HabitDetail } from "./habit/HabitDetails"
 import { UserProvider } from "./user/UserProvider"
 import { RewardProvider } from "./reward/RewardProvider"
 import { RewardList } from "./reward/RewardList"
+
 
 
 export const ApplicationViews = () => {
@@ -25,6 +26,7 @@ export const ApplicationViews = () => {
                         <Route exact path="/">
                             <HabitList />
                             <RewardList />
+                            <App />
                         </Route>
                         
                         {/* You put :habitId(\d+) at the end of the URL to serve as a variable to hold the actual value 

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./Habit.css"
 
-export const HabitAddModal = ({showModal, setShowModal, handleClose}) => (
+export const HabitAddModal = ({showModal, setShowModal, handleClose, habit}) => (
   <> 
     {showModal ? 
         <Modal.Dialog>
