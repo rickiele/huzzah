@@ -6,7 +6,7 @@ import { HabitContext } from "./HabitProvider"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./Habit.css"
 
-export const HabitEdit = (props, { habit }) => (
+export const HabitEdit = (props) => (
   <Modal
   {...props}
       size="lg"
@@ -15,18 +15,18 @@ export const HabitEdit = (props, { habit }) => (
   >
     <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          
+        {props.habit.name}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <h5>Habit Stats</h5>
-        <p>Date Started: (Timestamp goes here)</p>
+        <p>Date Started: {props.habit.timestamp}</p>
         <Form>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>
               <h5>Edit Habit Name</h5>
             </Form.Label>
-            <Form.Control type="text" placeholder="Edit habit name here" />
+            <Form.Control type="text" placeholder={props.habit.name} />
           </Form.Group>
         </Form>
       </Modal.Body>
@@ -37,36 +37,28 @@ export const HabitEdit = (props, { habit }) => (
   </Modal>
 )
 
-export const HabitEditModal = () => {
+export const HabitEditModal = ( {habit} ) => {
   // Modal States 
   const [modalShow, setModalShow] = React.useState(false);
 
-  const { getHabitById, deleteHabit } = useContext(HabitContext)
-	const [habit, setHabit] = useState({})
   const {habitId} = useParams()
   const history = useHistory()
 
-  useEffect(() => {
-    console.log("useEffect", habitId)
-    getHabitById(habitId)
-    .then((response) => {
-      setHabit(response)
-    })
-  }, [])
 
-  const handleDeleteHabit = () => {
-    deleteHabit(habit.id)
-    .then(() => {
-      history.push("/")
-    })
-  }
+  // const handleDeleteHabit = () => {
+  //   deleteHabit(habit.id)
+  //   .then(() => {
+  //     history.push("/")
+  //   })
+  // }
+
 
   return (
     <>
       <Button variant="primary" 
-        onClick={() => {
-            history.push(`/habits/${habit.id}`)
-        }} 
+        // onClick={() => {
+        //     history.push(`/habits/${habit.id}`)
+        // }} 
         onClick={() => setModalShow(true)} className="habits__editHabitBtn">
         Edit Habit 
       </Button>

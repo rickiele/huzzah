@@ -1,5 +1,8 @@
 import React from "react"
+import { useContext, useEffect, useState } from "react"
 import { Modal, Button, Form } from "react-bootstrap"
+import { useHistory, useParams } from "react-router-dom" 
+import { HabitContext } from "./HabitProvider"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./Habit.css"
 
@@ -44,10 +47,8 @@ export const HabitAddModal = () => {
 
       <MyVerticallyCenteredModal
         show={modalShow}
-        onHide={() => setModalShow(false)
-        
-        
-        }
+        onHide={() => setModalShow(false)}
+      
       />
     </>
   );

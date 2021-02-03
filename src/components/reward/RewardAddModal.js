@@ -20,9 +20,13 @@ function MyVerticallyCenteredModal(props) {
         <Form>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>
-              <h5>New Reward Name</h5>
+              <h5>Reward Name</h5>
             </Form.Label>
-            <Form.Control type="text" placeholder="Enter new reward name here" />
+            <Form.Control type="text" placeholder="Enter new reward name" />
+            <Form.Label>
+              <h5>Reward Location</h5>
+            </Form.Label>
+            <Form.Control type="text" placeholder="Enter location of reward" />
           </Form.Group>
         </Form>
       </Modal.Body>
