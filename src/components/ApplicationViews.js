@@ -25,6 +25,7 @@ export const ApplicationViews = () => {
                         <Route exact path="/">
                             <HabitList />
                             <RewardList />
+                            
                         </Route>
                         
                         {/* You put :habitId(\d+) at the end of the URL to serve as a variable to hold the actual value 
@@ -32,7 +33,7 @@ export const ApplicationViews = () => {
                         the value of 3 will be stored in that variable named habitId */}
                         <Route exact path="/habits/:habitId(\d+)">
                             <HabitDetail />
-                            
+            
                         </Route>
 
 

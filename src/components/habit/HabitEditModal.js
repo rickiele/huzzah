@@ -1,4 +1,6 @@
 import React from "react"
+import { useContext, useEffect, useState } from "react"
+import { useParams, useHistory } from "react-router-dom"
 import { Modal, Button, Form } from "react-bootstrap"
 import { HabitContext } from "./HabitProvider"
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -13,7 +15,7 @@ export const HabitEdit = (props, { habit }) => (
   >
     <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Habit Name Goes Here
+          
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -35,43 +37,47 @@ export const HabitEdit = (props, { habit }) => (
   </Modal>
 )
 
-
-// function MyVerticallyCenteredModal(props) {
-//   return (
-//     <Modal
-//       {...props}
-//       size="lg"
-//       aria-labelledby="contained-modal-title-vcenter"
-//       centered
-//     >
-//       <Modal.Header closeButton>
-//         <Modal.Title id="contained-modal-title-vcenter">
-//           Edit Habit (Habit Name goes here)
-//         </Modal.Title>
-//       </Modal.Header>
-//       <Modal.Body>
-//         <p>Date Started: (Timestamp goes here)</p>
-//       </Modal.Body>
-//       <Modal.Footer>
-//         <Button onClick={props.onHide}>Save Habit</Button>
-//       </Modal.Footer>
-//     </Modal>
-//   );
-// }
-
 export const HabitEditModal = () => {
+  // Modal States 
   const [modalShow, setModalShow] = React.useState(false);
+
+  const { getHabitById, deleteHabit } = useContext(HabitContext)
+	const [habit, setHabit] = useState({})
+  const {habitId} = useParams()
+  const history = useHistory()
+
+  useEffect(() => {
+    console.log("useEffect", habitId)
+    getHabitById(habitId)
+    .then((response) => {
+      setHabit(response)
+    })
+  }, [])
+
+  const handleDeleteHabit = () => {
+    deleteHabit(habit.id)
+    .then(() => {
+      history.push("/")
+    })
+  }
 
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)} className="habits__editHabitBtn">
-        Edit Habit
+      <Button variant="primary" 
+        onClick={() => {
+            history.push(`/habits/${habit.id}`)
+        }} 
+        onClick={() => setModalShow(true)} className="habits__editHabitBtn">
+        Edit Habit 
       </Button>
 
       <HabitEdit
         show={modalShow}
         onHide={() => setModalShow(false)}
+        key={habit.id}
+        habit={habit}
       />
+
     </>
   );
 }

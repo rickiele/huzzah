@@ -1,9 +1,9 @@
 import React from "react"
 import { Modal, Button, Form } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
-import "./Habit.css"
+import "./Reward.css"
 
-function MyVerticallyCenteredModal(props, {habit}) {
+function MyVerticallyCenteredModal(props) {
   return (
     <Modal
       {...props}
@@ -13,41 +13,38 @@ function MyVerticallyCenteredModal(props, {habit}) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          
+          Add A Reward
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>
-              <h5>New Habit Name</h5>
+              <h5>New Reward Name</h5>
             </Form.Label>
-            <Form.Control type="text" placeholder="Enter new habit name here" />
+            <Form.Control type="text" placeholder="Enter new reward name here" />
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Save New Habit</Button>
+        <Button onClick={props.onHide}>Save New Reward</Button>
       </Modal.Footer>
     </Modal>
   );
 }
 
-export const HabitAddModal = () => {
+export const RewardAddModal = () => {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)} className="habits__addHabitBtn">
-        Add Habit
+      <Button variant="primary" onClick={() => setModalShow(true)} className="rewards__addRewardBtn">
+        Add Reward
       </Button>
 
       <MyVerticallyCenteredModal
         show={modalShow}
-        onHide={() => setModalShow(false)
-        
-        
-        }
+        onHide={() => setModalShow(false)}
       />
     </>
   );
