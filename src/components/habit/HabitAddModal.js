@@ -19,13 +19,15 @@ function MyVerticallyCenteredModal(props) {
       <Modal.Body>
         <Form>
           <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Label>Habit Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter habit name here" />
+            <Form.Label>
+              <h5>New Habit Name</h5>
+            </Form.Label>
+            <Form.Control type="text" placeholder="Enter new habit name here" />
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Save Habit</Button>
+        <Button onClick={props.onHide}>Save New Habit</Button>
       </Modal.Footer>
     </Modal>
   );
@@ -47,3 +49,5 @@ export const HabitAddModal = () => {
     </>
   );
 }
+
+// Need event handler for button

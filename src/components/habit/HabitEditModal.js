@@ -13,14 +13,24 @@ export const HabitEdit = (props, { habit }) => (
   >
     <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          {/* {habit.name} */}
+          Habit Name Goes Here
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        <h5>Habit Stats</h5>
         <p>Date Started: (Timestamp goes here)</p>
+        <Form>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>
+              <h5>Edit Habit Name</h5>
+            </Form.Label>
+            <Form.Control type="text" placeholder="Edit habit name here" />
+          </Form.Group>
+        </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button>Save Habit</Button>
+        <Button>Delete Habit</Button>
+        <Button>Save New Habit Name</Button>
     </Modal.Footer>
   </Modal>
 )
