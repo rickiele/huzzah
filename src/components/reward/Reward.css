@@ -12,6 +12,15 @@
   float: right;
 }
 
-.reward__deleteRewardBtn {
+.rewards__editHabitBtn {
   float: right;
+}
+
+.rewards__addRewardsContainer {
+  margin-bottom: 2em;
+}
+
+.rewards__sayHiToUser {
+  margin-top: 1.5em;
+  margin-bottom: 2em;
 }
