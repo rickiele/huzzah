@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import { Modal, Button, Form } from "react-bootstrap"
 import { HabitContext } from "./HabitProvider"
-import "bootstrap/dist/css/bootstrap.min.css"
 import "./Habit.css"
 
 export const HabitDetail = () => {

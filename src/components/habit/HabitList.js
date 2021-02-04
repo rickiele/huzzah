@@ -5,7 +5,6 @@ import { HabitCard } from "./HabitCard"
 import { HabitAddModal } from "./HabitAddModal"
 import "./Habit.css"
 import { Modal, Container, Button, Col } from "react-bootstrap"
-import "bootstrap/dist/css/bootstrap.min.css"
 
 export const HabitList = () => {
   // Access data from HabitContext from the HabitProvider

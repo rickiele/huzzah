@@ -1,11 +1,8 @@
 /* Purpose: Individual Habit Card */
 import React from "react"
-import { Link } from "react-router-dom"
 import { Button, Card, Col, Row } from "react-bootstrap"
-import { HabitContext } from "./HabitProvider"
 import { HabitProgress } from "./HabitProgress"
 import { HabitEditModal } from './HabitEditModal'
-import "bootstrap/dist/css/bootstrap.min.css"
 import "./Habit.css"
 
 export const HabitCard = ({ habit }) => (
@@ -14,8 +11,8 @@ export const HabitCard = ({ habit }) => (
 
 				<Col className="habit__left">
 					<Card.Body>
-						<Card.Title>
-							<h3 className="habit__name">{habit.name}</h3>
+						<Card.Title className="habit__name">
+							<h3>{habit.name}</h3>
 						</Card.Title>
 						<HabitProgress/>
 					</Card.Body>

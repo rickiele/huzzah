@@ -3,10 +3,9 @@ import { useContext, useEffect, useState } from "react"
 import { Modal, Button, Form } from "react-bootstrap"
 import { useHistory, useParams } from "react-router-dom" 
 import { HabitContext } from "./HabitProvider"
-import "bootstrap/dist/css/bootstrap.min.css"
 import "./Habit.css"
 
-function HabitAdd (props) {
+const HabitAdd = (props) => {
   const { addHabit } = useContext(HabitContext)
   const timestamp = Date.now()
   const habitStart = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit', day: '2-digit' }).format(timestamp)
