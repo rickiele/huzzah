@@ -10,6 +10,10 @@ const HabitAdd = (props) => {
   const timestamp = Date.now()
   const habitStart = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit', day: '2-digit' }).format(timestamp)
   const currentUser = parseInt(localStorage.getItem("huzzah_user"))
+
+  const [isLoading, setIsLoading] = useState(true);
+  const { habitId } = useParams();
+  const history = useHistory();
   
   //for edit, hold on to state of animal in this view
     const [habit, setHabit] = useState({
@@ -17,11 +21,6 @@ const HabitAdd = (props) => {
       name: "",
       timestamp: ""
     })
-
-   const [isLoading, setIsLoading] = useState(true);
-
-   const { habitId } = useParams();
-   const history = useHistory();
 
 
    const handleControlledInputChange = (event) => {
@@ -37,6 +36,7 @@ const HabitAdd = (props) => {
       setIsLoading(true);
         //POST - add
         addHabit({
+            id: habit.id,
             userId: currentUser,
             name: habit.name,
             timestamp: habitStart
@@ -69,7 +69,6 @@ const HabitAdd = (props) => {
                 </Form.Label>
                 <Form.Control type="text" id="name" placeholder="Enter new habit name" 
                 onChange={handleControlledInputChange}
-                defaultValue={habit.name}
                 />
               </Form.Group>
             </Form>
