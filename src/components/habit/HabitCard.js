@@ -9,7 +9,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "./Habit.css"
 
 export const HabitCard = ({ habit }) => (
-
     <Card className="habits mb-3 " style={{ color: "#000"}}>
 			<Row>
 

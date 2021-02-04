@@ -7,22 +7,29 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "./Habit.css"
 
 function HabitAdd (props) {
-  const { addHabit, getHabitById, updateHabit } = useContext(HabitContext)
-
+  const { addHabit } = useContext(HabitContext)
+  const timestamp = Date.now()
+  const habitStart = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit', day: '2-digit' }).format(timestamp)
+  const currentUser = parseInt(localStorage.getItem("huzzah_user"))
+  
   //for edit, hold on to state of animal in this view
-  const [habit, setHabit] = useState({
-    name: ""
-  })
+    const [habit, setHabit] = useState({
+      userId: currentUser,
+      name: "",
+      timestamp: ""
+    })
 
    const [isLoading, setIsLoading] = useState(true);
 
    const { habitId } = useParams();
    const history = useHistory();
 
+
    const handleControlledInputChange = (event) => {
-     
+    // Creating an object called newHabit
      const newHabit = { ...habit }
-     newHabit[event.target.name] = event.target.value
+
+     newHabit[event.target.id] = event.target.value
      setHabit(newHabit)
    }
 
@@ -31,7 +38,9 @@ function HabitAdd (props) {
       setIsLoading(true);
         //POST - add
         addHabit({
-            name: habit.name
+            userId: currentUser,
+            name: habit.name,
+            timestamp: habitStart
         })
         .then(() => history.push("/"))
     }
@@ -59,8 +68,9 @@ function HabitAdd (props) {
                 <Form.Label>
                   <h5>Habit Name</h5>
                 </Form.Label>
-                <Form.Control type="text" placeholder="Enter new habit name" 
+                <Form.Control type="text" id="name" placeholder="Enter new habit name" 
                 onChange={handleControlledInputChange}
+                defaultValue={habit.name}
                 />
               </Form.Group>
             </Form>
