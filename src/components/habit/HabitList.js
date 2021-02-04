@@ -15,8 +15,8 @@ export const HabitList = () => {
     getHabits()
   }, [])
 
+  // Another hook, let's us tell React which route we want to visit (history.push)
   const history = useHistory()
-
   
   return (
     <Container className="habits">
