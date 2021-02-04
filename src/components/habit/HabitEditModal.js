@@ -56,9 +56,6 @@ export const HabitEditModal = ( {habit} ) => {
   return (
     <>
       <Button variant="primary" 
-        // onClick={() => {
-        //     history.push(`/habits/${habit.id}`)
-        // }} 
         onClick={() => setModalShow(true)} className="habits__editHabitBtn">
         Edit Habit 
       </Button>
