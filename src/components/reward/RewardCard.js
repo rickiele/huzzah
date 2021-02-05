@@ -11,7 +11,7 @@ export const RewardCard = ({ reward }) => (
 			<Col>
 				<Card.Body>
 					<Card.Title className="reward__name">
-						{reward.name}
+						{reward.name} at {reward.location}
 					</Card.Title>
 				</Card.Body>
 			</Col>
