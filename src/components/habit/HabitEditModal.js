@@ -69,7 +69,7 @@ const HabitEdit = (props) => {
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={handleDeleteHabit}>Delete Habit</Button>
-          <Button className="form_editHabitBtn"
+          <Button className="form__editHabitBtn"
             onClick={event => {
             event.preventDefault()
             handleEditHabit()

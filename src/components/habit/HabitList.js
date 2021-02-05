@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react"
-import { useHistory } from "react-router-dom" 
+import React, { useContext, useEffect } from "react"
 import { HabitContext } from "./HabitProvider"
 import { HabitCard } from "./HabitCard"
 import { HabitAddModal } from "./HabitAddModal"
 import "./Habit.css"
-import { Modal, Container, Button, Col } from "react-bootstrap"
+import { Container, Col } from "react-bootstrap"
 
 export const HabitList = () => {
   // Access data from HabitContext from the HabitProvider
@@ -13,9 +12,6 @@ export const HabitList = () => {
   useEffect(() => {
     getHabits()
   }, [])
-
-  // Another hook, let's us tell React which route we want to visit (history.push)
-  const history = useHistory()
   
   return (
     <Container className="habits">
@@ -23,7 +19,7 @@ export const HabitList = () => {
           <HabitAddModal />
           <h2>Habits</h2>
         </div>
-        <Col>
+        <Col className="habits__list">
           {/* Habit Cards are being rendered here*/}
           {
             habits.map(habit => {
@@ -35,7 +31,3 @@ export const HabitList = () => {
     
   )
 }
-
-
-
-// Modal in this one - 
