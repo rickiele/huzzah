@@ -1,8 +1,7 @@
 /* Purpose: Individual Reward Card */
 import React from "react"
-import { Button, Card, Col, Row } from "react-bootstrap"
+import { Card, Col, Row } from "react-bootstrap"
 import { RewardEditModal } from "./RewardEditModal"
-import "bootstrap/dist/css/bootstrap.min.css"
 import "./Reward.css"
 
 export const RewardCard = ({ reward }) => (
@@ -16,7 +15,7 @@ export const RewardCard = ({ reward }) => (
 				</Card.Body>
 			</Col>
 			<Col>
-					<RewardEditModal />
+				<RewardEditModal key={reward.id} reward={reward}/>
 			</Col>
 		</Row>
 	</Card>

@@ -28,6 +28,3 @@ export const HabitCard = ({ habit }) => (
 			</Row>
   	</Card>
 )
-
-					// <Link to={`/habits/${habit.id}`}>
-// 	You need an onclick event for the button
