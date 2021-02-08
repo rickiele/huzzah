@@ -1,8 +1,8 @@
 import React from "react"
 import { Modal, Button, Form } from "react-bootstrap"
 import { RewardContext } from "./RewardProvider"
-import { useContext, useEffect, useState } from "react"
-import { useHistory, useParams } from "react-router-dom" 
+import { useContext, useState } from "react"
+import { useHistory } from "react-router-dom" 
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./Reward.css"
 

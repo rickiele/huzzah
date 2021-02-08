@@ -1,12 +1,12 @@
 import React from "react"
-import { useContext, useEffect, useState } from "react"
-import { useParams, useHistory } from "react-router-dom"
+import { useContext, useState } from "react"
+import { useHistory } from "react-router-dom"
 import { Modal, Button, Form } from "react-bootstrap"
 import { HabitContext } from "./HabitProvider"
 import "./Habit.css"
 
 const HabitEdit = (props) => {
-  const { getHabitById, deleteHabit, updateHabit } = useContext(HabitContext)
+  const { deleteHabit, updateHabit } = useContext(HabitContext)
   
   const currentUser = parseInt(localStorage.getItem("huzzah_user"))
   const timestamp = props.habit.timestamp
@@ -88,7 +88,7 @@ export const HabitEditModal = ( {habit} ) => {
     <>
       <Button variant="primary" 
         onClick={() => setModalShow(true)} className="habits__editHabitBtn">
-        Edit Habit 
+        
       </Button>
 
       <HabitEdit
