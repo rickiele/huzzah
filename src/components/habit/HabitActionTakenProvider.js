@@ -11,8 +11,8 @@ export const HabitActionTakenProvider = (props) => {
     .then(setHabitActions)
   }
 
-  const addHabitAction = () => {
-    return fetch("http://localhost:8088/habits/?_embed=habitActionTaken", {
+  const addHabitAction = (habitObj) => {
+    return fetch("http://localhost:8088/habitActionTaken", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -5,6 +5,7 @@ import { RewardProvider } from "./reward/RewardProvider"
 import { UserProvider } from "./user/UserProvider"
 import { HabitList } from "./habit/HabitList"
 import { RewardList } from "./reward/RewardList"
+import { HabitActionTakenProvider } from "./habit/HabitActionTakenProvider"
 
 
 export const ApplicationViews = () => {
@@ -16,6 +17,7 @@ export const ApplicationViews = () => {
             </Route> */}
 
             {/* localhost:3000 -- Dashboard */}
+            <HabitActionTakenProvider>
             <HabitProvider>
                 <RewardProvider>
                     <UserProvider>
@@ -37,6 +39,8 @@ export const ApplicationViews = () => {
                     </UserProvider>
                 </RewardProvider>
             </HabitProvider>
+            </HabitActionTakenProvider>
+
 
 
         </>

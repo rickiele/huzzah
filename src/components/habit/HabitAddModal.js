@@ -15,7 +15,6 @@ const HabitAdd = (props) => {
   const { habitId } = useParams();
   const history = useHistory();
   
-  //for edit, hold on to state of animal in this view
     const [habit, setHabit] = useState({
       userId: currentUser,
       name: "",
