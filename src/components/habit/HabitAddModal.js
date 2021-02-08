@@ -102,5 +102,3 @@ export const HabitAddModal = () => {
     </>
   );
 }
-
-// Need event handler for button
