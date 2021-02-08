@@ -1,7 +1,7 @@
 import React from "react"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { Modal, Button, Form } from "react-bootstrap"
-import { useHistory, useParams } from "react-router-dom" 
+import { useHistory } from "react-router-dom" 
 import { HabitContext } from "./HabitProvider"
 import "./Habit.css"
 
@@ -12,7 +12,6 @@ const HabitAdd = (props) => {
   const currentUser = parseInt(localStorage.getItem("huzzah_user"))
 
   const [isLoading, setIsLoading] = useState(true);
-  const { habitId } = useParams();
   const history = useHistory();
   
     const [habit, setHabit] = useState({
@@ -43,10 +42,10 @@ const HabitAdd = (props) => {
         .then(() => history.push("/"))
     }
 
-    const foo = () => {
-      // {props.onHide}
+    // const foo = () => {
+    //   // {props.onHide}
       
-    }
+    // }
 
     return (
         <Modal

@@ -1,11 +1,52 @@
-import React from "react"
+import React, { useContext, useEffect, useState } from "react"
 import "./Habit.css"
 import { ProgressBar } from "react-bootstrap"
+import { HabitActionsContext } from "./HabitActionTakenProvider"
 
-export const HabitProgress = () => (
-  <ProgressBar now={60} />
-)
+export const HabitProgress = ({habit}) => {
+  // Get Habit and Habit Actions
+  const { habitActions, getHabitActions, getHabitActionsById } = useContext(HabitActionsContext)
 
+  useEffect(() => {
+    getHabitActions()
+  }, [])
+
+
+  const matchHabit = habitActions.find((habitObj) => habitObj.id ===  habit.id)
+  const habitActionArray = matchHabit.habitActionTaken
+  const totalHabitActions = habitActionArray.length
+
+  console.log(totalHabitActions, "habit actions length")
+
+  const habitWeek = 7
+  const currentProgress = (totalHabitActions*100) / habitWeek
+
+  console.log(currentProgress, "current progress of habit")
+
+  console.log(Math.round(2.23))
+
+  return (
+    <ProgressBar now={Math.round(currentProgress)} label={Math.round(currentProgress)} />
+  )
+}
+
+
+/* 
+ */
+/* dynamic habit (habitActions) and stale habits { habit } 
+how to divide with javascript - percentage values - apple.length / it by the number */
+
+/* Connect the track habit button to the progress bar
+You need to get Habit Actions/ import the provider
+the progressbar now needs to be the number of objects in a habitactiontaken/ 7 
+
+In the track habit button  component there needs to be an if statement - 
+progress bar needs to be the number of objects in habitactiontaken for that certain habit - so you need to
+have the habit id
+
+
+
+*/
 /* 
 When the track habit button is clicked, 
 1. The habit action has been taken, and the timestamp of that habit action taken is saved to the database
