@@ -30,10 +30,13 @@ export const ApplicationViews = () => {
                         {/* You put :habitId(\d+) at the end of the URL to serve as a variable to hold the actual value 
                         that will be in the URL. For example, if the URL is http://localhost:3000/habits/detail/3, 
                         the value of 3 will be stored in that variable named habitId */}
-                        {/* <Route exact path="/habits/:habitId(\d+)">
-                            <HabitDetail />
+                        {/* REWARD SCREEN 
+                        You could call rewardlist again, and have the get reward button 
+                        setState / false - pass it onto this / or a new component - 
+                        */}
+                        <Route exact path="/huzzah">
             
-                        </Route> */}
+                        </Route>
 
 
                     </UserProvider>

@@ -10,7 +10,7 @@ import "./Habit.css"
 
 export const HabitCard = ({ habit }) => {
 
-	// Get Habits for Habit Card
+		// Get Habits for Habit Card
 		const { getHabits } = useContext(HabitContext)
 
 		// Get Habit Actions for POST
@@ -71,3 +71,18 @@ export const HabitCard = ({ habit }) => {
 		)
 
 }
+
+
+/* 
+
+You need an if/else statement on the track habit button 
+
+if the user's habit objects = 7 / then show the Get Reward Button
+
+else, show the track habit button
+set a true false state 
+
+
+GET REWARD BTN
+Will history.push(to a reward screen)
+*/
