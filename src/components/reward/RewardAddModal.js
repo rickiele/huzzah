@@ -1,27 +1,28 @@
+/* PURPOSE: Add Reward Modal */
+
 import React from "react"
-import { Modal, Button, Form } from "react-bootstrap"
-import { RewardContext } from "./RewardProvider"
 import { useContext, useState } from "react"
 import { useHistory } from "react-router-dom" 
-import "bootstrap/dist/css/bootstrap.min.css"
+import { Modal, Button, Form } from "react-bootstrap"
+import { RewardContext } from "./RewardProvider"
 import "./Reward.css"
 
 const RewardAdd = (props) => {
+
+  /* Get addReward from the provider with useContext */
   const { addReward } = useContext(RewardContext)
+
   const currentUser = parseInt(localStorage.getItem("huzzah_user"))
 
   const [isLoading, setIsLoading] = useState(true);
-
   const history = useHistory();
   
-  //for edit, hold on to state of animal in this view
-    const [reward, setReward] = useState({
-      userId: currentUser,
-      name: "",
-      location: "",
-      url: ""
-    })
-
+  const [reward, setReward] = useState({
+    userId: currentUser,
+    name: "",
+    location: "",
+    url: ""
+  })
 
    const handleControlledInputChange = (event) => {
     // Creating an object called newReward
@@ -31,20 +32,21 @@ const RewardAdd = (props) => {
      setReward(newReward)
    }
 
-
+   /* Save reward - on click */
    const handleSaveReward = () => {
-      setIsLoading(true);
-        //POST - add
-        addReward({
-            id: reward.id,
-            userId: currentUser,
-            name: reward.name,
-            location: reward.location,
-            url: reward.url
-        })
-        .then(() => history.push("/"))
-    }
+    setIsLoading(true);
+      //POST - add
+      addReward({
+          id: reward.id,
+          userId: currentUser,
+          name: reward.name,
+          location: reward.location,
+          url: reward.url
+      })
+      .then(() => history.push("/"))
+  }
 
+  /* Render the Add Reward Modal */
   return (
     <Modal
       {...props}
@@ -79,8 +81,6 @@ const RewardAdd = (props) => {
             onChange={handleControlledInputChange} 
             />
             </Form.Group>
-            {/* <Form.Group controlId="form__addRewardLocation"> */}
-            {/* </Form.Group> */}
         </Form>
       </Modal.Body>
       <Modal.Footer>
@@ -91,12 +91,15 @@ const RewardAdd = (props) => {
                   Save New Reward</Button>
       </Modal.Footer>
     </Modal>
-  );
+  )
 }
 
 export const RewardAddModal = () => {
+
+  /* Modal states */
   const [modalShow, setModalShow] = React.useState(false);
 
+  /* Render the Add Reward button */
   return (
     <>
       <Button variant="primary" onClick={() => setModalShow(true)} className="rewards__addRewardBtn">

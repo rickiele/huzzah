@@ -1,12 +1,18 @@
+/* PURPOSE: Get Reward Modal */
+
 import React from "react"
 import { Modal, Button, Form } from "react-bootstrap"
 import "./Reward.css"
 
 const RewardGet = (props) => {
+
+  /* Modal states */
   const [modalShow, setModalShow] = React.useState(false);
 
+  /* Get the reward's URL */
   let rewardLink = props.reward.url
 
+  /* Render the Get Reward modal */
   return (
     <Modal
     {...props}
@@ -33,9 +39,11 @@ const RewardGet = (props) => {
 }
 
 export const RewardGetModal = ( {reward} ) => {
-  // Modal States 
+
+  /* Modal states */
   const [modalShow, setModalShow] = React.useState(false);
 
+  /* Render the Get Reward button */
   return (
     <>
       <Button variant="primary" 
