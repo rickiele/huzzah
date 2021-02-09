@@ -14,10 +14,10 @@ export const HabitCard = ({ habit }) => {
 		const { getHabits } = useContext(HabitContext)
 
 		// Get Habit Actions for POST
-		const { getHabitActions, addHabitAction } = useContext(HabitActionsContext)
+		const { getHabitActions, addHabitAction, habitActions } = useContext(HabitActionsContext)
 		const timestamp = Date.now()
   	const habitActionTimestamp = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit', day: '2-digit' }).format(timestamp)
-		
+
 		const [isLoading, setIsLoading] = useState(true);
 		const history = useHistory();
 		
@@ -36,10 +36,32 @@ export const HabitCard = ({ habit }) => {
         .then(() => history.push("/"))
     }
 
+		// Get your habit actions
+		const matchHabit = habitActions.find((habitObj) => habitObj.id ===  habit.id)
+		const habitActionArray = matchHabit?.habitActionTaken
+ 		const totalHabitActions = habitActionArray?.length
+
+		console.log(totalHabitActions, "habit actions")
+		
+		/* 
+		You need to get the Track Habit btn to turn into the Get Reward btn 
+		when totalHabitActions === 7
+
+		if (totalHabitActions === 7) {
+			Show the get rewards button
+			and delete the totalHabitActions for that habit
+		} else {
+			Show the track habit button
+		}
+
+		GET REWARDS BTN
+		history.push("/huzzah")
+		*/
+
 		return (
     <Card className="habits mb-3 " style={{ color: "#000"}}>
-			<Row>
 
+			<Row>
 				<Col className="habit__left">
 					<Card.Body>
 						<Card.Title className="habit__name">
@@ -50,13 +72,19 @@ export const HabitCard = ({ habit }) => {
 				</Col>
 
 				<Col className="habit__right">
-					<Button 
-					className="habit__trackHabitBtn"
-					onClick={event => {
-						event.preventDefault()
-						handleTrackHabit()
-					}}>
-						Track Habit</Button>
+					{totalHabitActions === 7 ? 
+					<> 
+					<Button className="habit__getRewardBtn" onClick={() => {
+						history.push("/huzzah")}} >
+							Get Reward</Button> 
+					</> 
+					: 
+					<> 
+					<Button className="habit__trackHabitBtn" onClick={event => {
+							event.preventDefault()
+							handleTrackHabit()}} >
+								Track Habit</Button> 
+					</>}
 				</Col>
 					<HabitEditModal key={habit.id} habit={habit}/>
 

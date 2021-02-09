@@ -16,14 +16,8 @@ export const HabitProgress = ({habit}) => {
   const habitActionArray = matchHabit?.habitActionTaken
   const totalHabitActions = habitActionArray?.length
 
-  console.log(totalHabitActions, "habit actions length")
-
   const habitWeek = 7
   const currentProgress = (totalHabitActions*100) / habitWeek
-
-  console.log(currentProgress, "current progress of habit")
-
-  console.log(Math.round(2.23))
 
   return (
     <ProgressBar now={Math.round(currentProgress)} label={Math.round(currentProgress)} />
