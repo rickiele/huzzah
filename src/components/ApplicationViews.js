@@ -6,6 +6,7 @@ import { UserProvider } from "./user/UserProvider"
 import { HabitList } from "./habit/HabitList"
 import { RewardList } from "./reward/RewardList"
 import { HabitActionTakenProvider } from "./habit/HabitActionTakenProvider"
+import { RewardScreen } from './reward/RewardScreen'
 
 
 export const ApplicationViews = () => {
@@ -35,6 +36,7 @@ export const ApplicationViews = () => {
                         setState / false - pass it onto this / or a new component - 
                         */}
                         <Route exact path="/huzzah">
+                            <RewardScreen />
             
                         </Route>
 

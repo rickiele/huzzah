@@ -24,3 +24,16 @@
   margin-top: 1.5em;
   margin-bottom: 2em;
 }
+
+.rewardScreen {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: white !important;
+}
+
+a:hover {
+  text-decoration: none;
+}

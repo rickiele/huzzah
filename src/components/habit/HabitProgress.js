@@ -11,7 +11,6 @@ export const HabitProgress = ({habit}) => {
     getHabitActions()
   }, [])
 
-
   const matchHabit = habitActions.find((habitObj) => habitObj.id ===  habit.id)
   // ? - if this existss do it, then if undefined don't do anything
   const habitActionArray = matchHabit?.habitActionTaken
