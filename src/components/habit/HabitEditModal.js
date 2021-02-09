@@ -1,3 +1,5 @@
+/* PURPOSE: Edit Habit Modal */
+
 import React from "react"
 import { useContext, useState } from "react"
 import { useHistory } from "react-router-dom"
@@ -6,14 +8,15 @@ import { HabitContext } from "./HabitProvider"
 import "./Habit.css"
 
 const HabitEdit = (props) => {
+
+  /* Get delete and edit from the provider */
   const { deleteHabit, updateHabit } = useContext(HabitContext)
   
+  const [isLoading, setIsLoading] = useState(true);
+  const history = useHistory()
+
   const currentUser = parseInt(localStorage.getItem("huzzah_user"))
   const timestamp = props.habit.timestamp
-
-  const history = useHistory()
-  
-  const [isLoading, setIsLoading] = useState(true);
   
   const [habit, setHabit] = useState({
     userId: currentUser,
@@ -29,6 +32,7 @@ const HabitEdit = (props) => {
      setHabit(editHabit)
   }
 
+  /* Delete habit -- on click */
   const handleDeleteHabit = () => {
     deleteHabit(props.habit.id)
     .then(() => {
@@ -36,11 +40,13 @@ const HabitEdit = (props) => {
     })
   }
 
+  /* Edit Habit -- on click */
   const handleEditHabit = () => {
       setIsLoading(true);
         updateHabit(habit)
   }
 
+  /* Render the Edit Habit Modal */
   return (
     <Modal
     {...props}
@@ -81,9 +87,11 @@ const HabitEdit = (props) => {
 }
 
 export const HabitEditModal = ( {habit} ) => {
-  // Modal States 
+
+  /* Modal States  */
   const [modalShow, setModalShow] = React.useState(false);
 
+  /* Render the Edit Habit button */
   return (
     <>
       <Button variant="primary" 

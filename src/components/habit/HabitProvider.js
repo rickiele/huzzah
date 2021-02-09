@@ -1,5 +1,5 @@
-/* Purpose: Data for habits, adding, editing, and deleting habits.
- */
+/* PURPOSE: Habit provider */
+
 import React, { useState, createContext } from "react"
 
 export const HabitContext = createContext()

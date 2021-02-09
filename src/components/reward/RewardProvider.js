@@ -1,5 +1,5 @@
-/* Purpose: Data for rewards, adding, editing, and deleting rewards.
- */
+/* PURPOSE: Reward Provider */
+
 import React, { useState, createContext } from "react"
 
 export const RewardContext = createContext()

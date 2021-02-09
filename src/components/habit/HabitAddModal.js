@@ -14,23 +14,22 @@ const HabitAdd = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
   
-    const [habit, setHabit] = useState({
-      userId: currentUser,
-      name: "",
-      timestamp: ""
-    })
+  const [habit, setHabit] = useState({
+    userId: currentUser,
+    name: "",
+    timestamp: ""
+  })
 
-
-   const handleControlledInputChange = (event) => {
+  const handleControlledInputChange = (event) => {
     // Creating an object called newHabit
-     const newHabit = { ...habit }
+    const newHabit = { ...habit }
 
-     newHabit[event.target.id] = event.target.value
-     setHabit(newHabit)
-   }
+    newHabit[event.target.id] = event.target.value
+    setHabit(newHabit)
+  }
 
-
-   const handleSaveHabit = () => {
+  /* Save Habit -- on click */
+  const handleSaveHabit = () => {
       setIsLoading(true);
         //POST - add
         addHabit({
@@ -40,52 +39,51 @@ const HabitAdd = (props) => {
             timestamp: habitStart
         })
         .then(() => history.push("/"))
-    }
+  }
 
-    // const foo = () => {
-    //   // {props.onHide}
-      
-    // }
-
-    return (
-        <Modal
-          {...props}
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-              Add A Habit
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group controlId="form_addHabitName">
-                <Form.Label>
-                  <h5>Habit Name</h5>
-                </Form.Label>
-                <Form.Control type="text" id="name" placeholder="Enter new habit name" 
+  /* Render the Add Habit modal */
+  return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Add A Habit
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="form_addHabitName">
+              <Form.Label>
+                <h5>Habit Name</h5>
+              </Form.Label>
+              <Form.Control type="text" id="name" placeholder="Enter new habit name" 
                 onChange={handleControlledInputChange}
-                />
-              </Form.Group>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button className="form_addNewHabitBtn" 
-              onClick={event => {
-                event.preventDefault()
-                handleSaveHabit()
-            }}>
-              Add New Habit</Button>
-          </Modal.Footer>
-        </Modal>
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button className="form_addNewHabitBtn" 
+            onClick={event => {
+              event.preventDefault()
+              handleSaveHabit()
+          }}>
+            Add New Habit</Button>
+        </Modal.Footer>
+      </Modal>
       );
 }
 
 export const HabitAddModal = () => {
+
+  /* Modal states */
   const [modalShow, setModalShow] = React.useState(false);
 
+  /* Render the Add Habit button */
   return (
     <>
       <Button variant="primary" onClick={() => setModalShow(true)} className="habits__addHabitBtn">
@@ -95,8 +93,7 @@ export const HabitAddModal = () => {
       <HabitAdd
         show={modalShow}
         onHide={() => setModalShow(false)}
-      
       />
     </>
-  );
+  )
 }

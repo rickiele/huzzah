@@ -12,7 +12,6 @@ export const UserProvider = (props) => {
         .then(setUsers)
     }
 
-    // Probably don't need this.
     const addUser = UserObj => {
         return fetch("http://localhost:8088/users", {
             method: "POST",
