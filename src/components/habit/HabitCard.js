@@ -1,7 +1,7 @@
 /* PURPOSE: Individual Habit Card */
 
 import React, { useContext, useEffect, useState } from "react"
-import { useHistory } from "react-router-dom" 
+import { useHistory, Link } from "react-router-dom" 
 import { Button, Card, Col, Row } from "react-bootstrap"
 import { HabitContext } from "./HabitProvider"
 import { HabitActionsContext } from "./HabitActionTakenProvider"
@@ -13,7 +13,7 @@ export const HabitCard = ({ habit }) => {
 
 	/* Context for Habits and Habit Actions Taken */
 	const { getHabits } = useContext(HabitContext)
-	const { getHabitActions, addHabitAction, habitActions } = useContext(HabitActionsContext)
+	const { getHabitActions, addHabitAction, habitActions, deleteHabitActions } = useContext(HabitActionsContext)
 		
 	/* Get the Habits and the Habit Actions Taken */
 	useEffect(() => {
@@ -37,10 +37,32 @@ export const HabitCard = ({ habit }) => {
       .then(() => history.push("/"))
   }
 
+	
 	/* totalHabitActions = number of times a habit has been tracked */
 	const matchHabit = habitActions.find((habitObj) => habitObj.id ===  habit.id)
 	const habitActionArray = matchHabit?.habitActionTaken
- 	const totalHabitActions = habitActionArray?.length
+	const totalHabitActions = habitActionArray?.length
+	
+	
+	/* Delete habit actions array for habit */
+	const handleDeleteHabitActions = () => {
+		deleteHabitActions(habit.id)
+  }
+	
+
+	/* habitActionArray?.forEach(element => console.log(element)) */
+	//  console.log(habitActionArray, "what is this")
+	/* 
+	for (const habitActionObj of habitActionArray) {
+			handleDeleteHabitActions(habitActionObj.id)
+		}
+	*/
+	
+	/* Get Reward Button -- On Click */
+	const getRewardButton = () => {
+		history.push(`/huzzah/${habit.id}`)
+	}
+
 
 	/* Render the habit cards and progress bars */ 
 	return (
@@ -58,9 +80,10 @@ export const HabitCard = ({ habit }) => {
 				{/* Show the Get Reward btn or Track Habit btn */}
 				{totalHabitActions === 7 ? 
 				<> 
-				<Button className="habit__getRewardBtn" onClick={() => {
-					history.push("/huzzah")}} >
-						Get Reward</Button> 
+				<Button className="habit__getRewardBtn" onClick={getRewardButton}>
+						Get Reward 
+				</Button> 
+					
 				</> : 
 				<> 
 				<Button className="habit__trackHabitBtn" onClick={event => {

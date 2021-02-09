@@ -37,7 +37,7 @@ export const ApplicationViews = () => {
                         You could call rewardlist again, and have the get reward button 
                         setState / false - pass it onto this / or a new component - 
                         */}
-                      <Route exact path="/huzzah">
+                      <Route exact path="/huzzah/:habitId(\d+)">
                           <RewardScreen />
                       </Route>
 
