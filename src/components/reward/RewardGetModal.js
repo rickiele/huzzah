@@ -1,7 +1,10 @@
 /* PURPOSE: Get Reward Modal */
 
-import React from "react"
-import { Modal, Button, Form } from "react-bootstrap"
+import React, { useContext, useEffect, useState } from "react"
+import { useHistory } from "react-router-dom" 
+import { Modal, Button } from "react-bootstrap"
+import { RewardGivenContext } from "./RewardGivenProvider"
+import { RewardContext } from "./RewardProvider"
 import "./Reward.css"
 
 const RewardGet = (props) => {
@@ -9,8 +12,56 @@ const RewardGet = (props) => {
   /* Modal states */
   const [modalShow, setModalShow] = React.useState(false);
 
-  /* Get the reward's URL */
-  let rewardLink = props.reward.url
+  /* Context for Rewards and Rewards Given */
+  const { getRewards, deleteReward } = useContext(RewardContext)
+  const { getRewardsGiven, addRewardGiven } = useContext(RewardGivenContext)
+
+  /* Get the Rewards and then the Rewards Given */
+	useEffect(() => {
+		getRewards()
+		.then(getRewardsGiven())
+	}, [])
+		
+
+  /* Save Reward Given -- ON CLICK */
+  const timestamp = Date.now()
+	const rewardGivenTimestamp = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit', day: '2-digit' }).format(timestamp)
+  const [isLoading, setIsLoading] = useState(true)
+  const history = useHistory()
+
+   const handleRewardGiven = () => {
+    setIsLoading(true);
+      //POST - add
+      addRewardGiven ({
+          rewardId: props.reward.id,
+          timestamp: rewardGivenTimestamp
+      })
+  }
+
+  /* Delete the reward after it is given */
+  const handleDeleteReward = () => {
+    deleteReward(props.reward.id)
+    .then(() => {
+      history.push("/")
+    })
+  }
+
+
+  /* Get the reward's URL and invoke POST to Rewards Given*/
+  const yesToReward = () => {
+    /* Send user to the reward's link */
+    let rewardLink = props.reward.url
+    window.open(rewardLink)
+
+    /* POST to Reward Given in the DB */
+    /* DELETE the Reward from the DB */
+    handleRewardGiven()
+    handleDeleteReward()
+  }
+
+
+  {/* <a href={rewardLink} target="_blank">Yes</a> */}
+
 
   /* Render the Get Reward modal */
   return (
@@ -29,8 +80,8 @@ const RewardGet = (props) => {
               <h3>{props.reward.name} at {props.reward.location}?</h3>
         </Modal.Body>
         <Modal.Footer>
-          <Button>
-            <a href={rewardLink} target="_blank">Yes</a>
+          <Button onClick={yesToReward}>
+            Yes
           </Button>
           <Button onClick={props.onHide}> No</Button>
          </Modal.Footer>

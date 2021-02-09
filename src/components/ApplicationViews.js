@@ -2,6 +2,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { HabitProvider } from "./habit/HabitProvider"
 import { RewardProvider } from "./reward/RewardProvider"
+import { RewardGivenProvider } from "./reward/RewardGivenProvider"
 import { UserProvider } from "./user/UserProvider"
 import { HabitList } from "./habit/HabitList"
 import { RewardList } from "./reward/RewardList"
@@ -19,14 +20,15 @@ export const ApplicationViews = () => {
 
             {/* localhost:3000 -- Dashboard */}
             <HabitActionTakenProvider>
-            <HabitProvider>
+            	<HabitProvider>
                 <RewardProvider>
+                  <RewardGivenProvider>
                     <UserProvider>
 
-                        <Route exact path="/">
-                            <HabitList />
-                            <RewardList />
-                        </Route>
+                      <Route exact path="/">
+                          <HabitList />
+                          <RewardList />
+                      </Route>
                         
                         {/* You put :habitId(\d+) at the end of the URL to serve as a variable to hold the actual value 
                         that will be in the URL. For example, if the URL is http://localhost:3000/habits/detail/3, 
@@ -35,19 +37,16 @@ export const ApplicationViews = () => {
                         You could call rewardlist again, and have the get reward button 
                         setState / false - pass it onto this / or a new component - 
                         */}
-                        <Route exact path="/huzzah">
-                            <RewardScreen />
-            
-                        </Route>
+                      <Route exact path="/huzzah">
+                          <RewardScreen />
+                      </Route>
 
 
                     </UserProvider>
-                </RewardProvider>
-            </HabitProvider>
-            </HabitActionTakenProvider>
-
-
-
+                  </RewardGivenProvider>
+              </RewardProvider>
+         		</HabitProvider>
+          </HabitActionTakenProvider>
         </>
     )
 }
