@@ -43,6 +43,7 @@ const RewardEdit = (props) => {
   const handleEditReward = () => {
       setIsLoading(true);
         updateReward(reward)
+        props.onHide()
   }
 
   /* Render the Edit Reward Modal */

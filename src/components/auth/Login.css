@@ -67,3 +67,6 @@ fieldset {
   min-height: 5rem;
 }
 
+a{
+  color: black !important;
+}

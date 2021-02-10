@@ -10,6 +10,7 @@ export const RewardScreen = () => {
 
   /* Context for rewards */
   const { rewards, getRewards } = useContext(RewardContext)
+  const currentUser = parseInt(localStorage.getItem("huzzah_user"))
 
   /* Get the rewards */
   useEffect(() => {
@@ -26,7 +27,7 @@ export const RewardScreen = () => {
       <Col className="rewardScreen__list">
             {/* Reward Cards are being rendered here*/}
             {
-              rewards.map(reward => {
+              rewards.filter(r => r.userId === currentUser).map(reward => {
                 return <RewardScreenCard key={reward.id} reward={reward} />
               })
             }
