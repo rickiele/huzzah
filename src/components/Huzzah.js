@@ -4,19 +4,22 @@ import { Route, Redirect } from "react-router-dom"
 import { ApplicationViews } from "./ApplicationViews"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
+import { HeaderCard } from "./header/Header"
+import { UserProvider } from "./user/UserProvider"
 import "./Huzzah.css";
 
 export const Huzzah = () => (
   
   <>
-  <h1>Huzzah</h1>
-  <div className="huzzah__container">
       <Route
         render={() => {
           if (localStorage.getItem("huzzah_user")) {
             return (
               <>
+              <UserProvider>
+                <HeaderCard />
                 <ApplicationViews />
+              </UserProvider>
               </>
             );
           } else {
@@ -24,7 +27,6 @@ export const Huzzah = () => (
           }
         }}
       />
-    </div>
 
       <Route path="/login">
         <Login />
