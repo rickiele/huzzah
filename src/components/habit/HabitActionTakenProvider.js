@@ -12,6 +12,12 @@ export const HabitActionTakenProvider = (props) => {
     .then(setHabitActions)
   }
 
+  const getHabitActionsOnly = () => {
+    return fetch("http://localhost:8088/habitActionTaken")
+    .then(res => res.json())
+    .then(setHabitActions)
+  }
+
   const addHabitAction = (habitObj) => {
     return fetch("http://localhost:8088/habitActionTaken", {
             method: "POST",
@@ -28,9 +34,16 @@ export const HabitActionTakenProvider = (props) => {
     .then(res => res.json())
   }
 
+  const deleteHabitActions = id => {
+    return fetch(`http://localhost:8088/habitActionTaken/${id}`, {
+        method: "DELETE"
+    })
+    .then(getHabitActions)
+  }
+
   return (
     <HabitActionsContext.Provider value={{
-        habitActions, getHabitActions, addHabitAction, getHabitActionsById
+        habitActions, getHabitActions, addHabitAction, getHabitActionsById, deleteHabitActions, getHabitActionsOnly
     }}>
         {props.children}
     </HabitActionsContext.Provider>

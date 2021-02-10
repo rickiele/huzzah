@@ -1,10 +1,13 @@
 /* PURPOSE: Get Reward Modal */
 
 import React, { useContext, useEffect, useState } from "react"
-import { useHistory } from "react-router-dom" 
+import { useParams, useHistory } from "react-router-dom" 
 import { Modal, Button } from "react-bootstrap"
 import { RewardGivenContext } from "./RewardGivenProvider"
 import { RewardContext } from "./RewardProvider"
+import { HabitActionsContext } from "../habit/HabitActionTakenProvider"
+import { HabitContext } from "../habit/HabitProvider"
+
 import "./Reward.css"
 
 const RewardGet = (props) => {
@@ -12,16 +15,30 @@ const RewardGet = (props) => {
   /* Modal states */
   const [modalShow, setModalShow] = React.useState(false);
 
+
+  const {habitId} = useParams(); 
+
   /* Context for Rewards and Rewards Given */
   const { getRewards, deleteReward } = useContext(RewardContext)
   const { getRewardsGiven, addRewardGiven } = useContext(RewardGivenContext)
+  const { habitActions, getHabitActionsOnly, deleteHabitActions, getHabitActionsById } = useContext(HabitActionsContext)
 
-  /* Get the Rewards and then the Rewards Given */
+  const [habitAction, setHabitActions] = useState({})
+
+  /* Get the Rewards and then the Rewards Given and the habit actions */
 	useEffect(() => {
 		getRewards()
-		.then(getRewardsGiven())
+		.then(getRewardsGiven)
+    .then(getHabitActionsOnly)
 	}, [])
-		
+
+	// useEffect(() => {
+	// 	getHabitActionsById(habitId)
+  //     .then((response) => {
+  //       setHabitActions(response)
+  //     })
+	// }, [])
+	
 
   /* Save Reward Given -- ON CLICK */
   const timestamp = Date.now()
@@ -38,12 +55,11 @@ const RewardGet = (props) => {
       })
   }
 
+
   /* Delete the reward after it is given */
-  const handleDeleteReward = () => {
-    deleteReward(props.reward.id)
-    .then(() => {
-      history.push("/")
-    })
+  const handleDeleteHabitActions = () => {
+    let habitActionsArrayForId = habitActions.filter(h => h.habitId === parseInt(habitId))
+    habitActionsArrayForId?.forEach(element => deleteHabitActions(element.id)) 
   }
 
 
@@ -53,14 +69,15 @@ const RewardGet = (props) => {
     let rewardLink = props.reward.url
     window.open(rewardLink)
 
+    /* Delete all habit actions associated with the habit in the parameter */
+    handleDeleteHabitActions()
+
     /* POST to Reward Given in the DB */
-    /* DELETE the Reward from the DB */
     handleRewardGiven()
-    handleDeleteReward()
+    
+    /* Back to home page */
+    history.push("/")
   }
-
-
-  {/* <a href={rewardLink} target="_blank">Yes</a> */}
 
 
   /* Render the Get Reward modal */
