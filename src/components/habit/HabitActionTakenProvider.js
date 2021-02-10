@@ -34,14 +34,12 @@ export const HabitActionTakenProvider = (props) => {
     .then(res => res.json())
   }
 
-  const deleteHabitActions = () => {
-    return fetch("http://localhost:8088/habitActionTaken", {
+  const deleteHabitActions = id => {
+    return fetch(`http://localhost:8088/habitActionTaken/${id}`, {
         method: "DELETE"
     })
     .then(getHabitActions)
   }
-
-
 
   return (
     <HabitActionsContext.Provider value={{

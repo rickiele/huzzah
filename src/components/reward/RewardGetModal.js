@@ -25,19 +25,19 @@ const RewardGet = (props) => {
 
   const [habitAction, setHabitActions] = useState({})
 
-  /* Get the Rewards and then the Rewards Given */
+  /* Get the Rewards and then the Rewards Given and the habit actions */
 	useEffect(() => {
 		getRewards()
 		.then(getRewardsGiven)
     .then(getHabitActionsOnly)
 	}, [])
 
-	useEffect(() => {
-		getHabitActionsById(habitId)
-      .then((response) => {
-        setHabitActions(response)
-      })
-	}, [])
+	// useEffect(() => {
+	// 	getHabitActionsById(habitId)
+  //     .then((response) => {
+  //       setHabitActions(response)
+  //     })
+	// }, [])
 	
 
   /* Save Reward Given -- ON CLICK */
@@ -54,45 +54,29 @@ const RewardGet = (props) => {
           timestamp: rewardGivenTimestamp
       })
   }
-  /* 
-  	for (const habitActionObj of habitActionArray) {
-			handleDeleteHabitActions(habitActionObj.id)
-		}
-    
-    //  {habitId === habitAction.id ? deleteHabitActions() }
-    
-    /* habitActionArray?.forEach(element => deleteHabitActions(element)) */
 
-  // let habitActionsArray = habitActions.filter(h => h.habitId === parseInt(habitId)) 
-  // let pls = parseInt(habitId)
+
   /* Delete the reward after it is given */
-
-  // if (habitId === habitAction.id) {
-  //   deleteHabitActions(habitAction.id)
-  // } 
-
   const handleDeleteHabitActions = () => {
     let habitActionsArrayForId = habitActions.filter(h => h.habitId === parseInt(habitId))
-    habitActionsArrayForId?.forEach(element => deleteHabitActions(element)) 
-
-    console.log(habitActionsArrayForId, "hello iman")
+    habitActionsArrayForId?.forEach(element => deleteHabitActions(element.id)) 
   }
 
 
   /* Get the reward's URL and invoke POST to Rewards Given*/
   const yesToReward = () => {
     /* Send user to the reward's link */
-    // let rewardLink = props.reward.url
-    // window.open(rewardLink)
+    let rewardLink = props.reward.url
+    window.open(rewardLink)
 
     /* Delete all habit actions associated with the habit in the parameter */
     handleDeleteHabitActions()
 
     /* POST to Reward Given in the DB */
-    // handleRewardGiven()
+    handleRewardGiven()
     
     /* Back to home page */
-    // history.push("/")
+    history.push("/")
   }
 
 
