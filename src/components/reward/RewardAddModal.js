@@ -43,7 +43,7 @@ const RewardAdd = (props) => {
           location: reward.location,
           url: reward.url
       })
-      .then(() => history.push("/"))
+      props.onHide()
   }
 
   /* Render the Add Reward Modal */

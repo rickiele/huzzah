@@ -44,6 +44,7 @@ const HabitEdit = (props) => {
   const handleEditHabit = () => {
       setIsLoading(true);
         updateHabit(habit)
+        props.onHide()
   }
 
   /* Render the Edit Habit Modal */

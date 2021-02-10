@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useContext, useState } from "react"
 import { Modal, Button, Form } from "react-bootstrap"
 import { useHistory } from "react-router-dom" 
@@ -29,6 +29,8 @@ const HabitAdd = (props) => {
   }
 
   /* Save Habit -- on click */
+  const [modalShow, setModalShow] = React.useState(false);
+
   const handleSaveHabit = () => {
       setIsLoading(true);
         //POST - add
@@ -38,7 +40,7 @@ const HabitAdd = (props) => {
             name: habit.name,
             timestamp: habitStart
         })
-        .then(() => history.push("/"))
+        props.onHide()
   }
 
   /* Render the Add Habit modal */
@@ -60,7 +62,7 @@ const HabitAdd = (props) => {
               <Form.Label>
                 <h5>Habit Name</h5>
               </Form.Label>
-              <Form.Control type="text" id="name" placeholder="Enter new habit name" 
+              <Form.Control type="text" id="name" placeholder="Enter new habit name"
                 onChange={handleControlledInputChange}
               />
             </Form.Group>
@@ -68,10 +70,7 @@ const HabitAdd = (props) => {
         </Modal.Body>
         <Modal.Footer>
           <Button className="form_addNewHabitBtn" 
-            onClick={event => {
-              event.preventDefault()
-              handleSaveHabit()
-          }}>
+            onClick={handleSaveHabit}>
             Add New Habit</Button>
         </Modal.Footer>
       </Modal>
@@ -92,8 +91,10 @@ export const HabitAddModal = () => {
 
       <HabitAdd
         show={modalShow}
-        onHide={() => setModalShow(false)}
+        onHide={() => {setModalShow(false)}}
       />
     </>
   )
 }
+
+
