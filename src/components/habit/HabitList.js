@@ -11,6 +11,7 @@ export const HabitList = () => {
 
   /* Access data from HabitContext from the HabitProvider */
   const { habits, getHabits } = useContext(HabitContext)
+  const currentUser = parseInt(localStorage.getItem("huzzah_user"))
 
   /* Get the habits */
   useEffect(() => {
@@ -26,8 +27,10 @@ export const HabitList = () => {
       </div>
       <Col className="habits__list">
         {/* Habit Cards are being rendered here*/}
-        { habits.map(habit => {
-            return <HabitCard key={habit.id} habit={habit} />})
+        { 
+          habits.filter(h => h.userId === currentUser).map(habit => {
+            return <HabitCard key={habit.id} habit={habit} />
+          })
         }
       </Col>
     </Container>
