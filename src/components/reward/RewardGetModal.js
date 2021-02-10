@@ -6,7 +6,6 @@ import { Modal, Button } from "react-bootstrap"
 import { RewardGivenContext } from "./RewardGivenProvider"
 import { RewardContext } from "./RewardProvider"
 import { HabitActionsContext } from "../habit/HabitActionTakenProvider"
-import { HabitContext } from "../habit/HabitProvider"
 
 import "./Reward.css"
 
@@ -23,7 +22,6 @@ const RewardGet = (props) => {
   const { getRewardsGiven, addRewardGiven } = useContext(RewardGivenContext)
   const { habitActions, getHabitActionsOnly, deleteHabitActions, getHabitActionsById } = useContext(HabitActionsContext)
 
-  const [habitAction, setHabitActions] = useState({})
 
   /* Get the Rewards and then the Rewards Given and the habit actions */
 	useEffect(() => {
@@ -31,14 +29,6 @@ const RewardGet = (props) => {
 		.then(getRewardsGiven)
     .then(getHabitActionsOnly)
 	}, [])
-
-	// useEffect(() => {
-	// 	getHabitActionsById(habitId)
-  //     .then((response) => {
-  //       setHabitActions(response)
-  //     })
-	// }, [])
-	
 
   /* Save Reward Given -- ON CLICK */
   const timestamp = Date.now()
@@ -54,7 +44,6 @@ const RewardGet = (props) => {
           timestamp: rewardGivenTimestamp
       })
   }
-
 
   /* Delete the reward after it is given */
   const handleDeleteHabitActions = () => {
@@ -78,7 +67,6 @@ const RewardGet = (props) => {
     /* Back to home page */
     history.push("/")
   }
-
 
   /* Render the Get Reward modal */
   return (
