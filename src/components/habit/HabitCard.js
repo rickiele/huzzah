@@ -1,7 +1,7 @@
 /* PURPOSE: Individual Habit Card */
 
 import React, { useContext, useEffect, useState } from "react"
-import { useHistory, Link } from "react-router-dom" 
+import { useHistory } from "react-router-dom" 
 import { Button, Card, Col, Row } from "react-bootstrap"
 import { HabitContext } from "./HabitProvider"
 import { HabitActionsContext } from "./HabitActionTakenProvider"
@@ -43,11 +43,6 @@ export const HabitCard = ({ habit }) => {
 	const habitActionArray = matchHabit?.habitActionTaken
 	const totalHabitActions = habitActionArray?.length
 	
-	
-	/* Delete habit actions array for habit */
-	const handleDeleteHabitActions = () => {
-		deleteHabitActions(habit.id)
-  }
 	
 	/* Get Reward Button -- On Click */
 	const getRewardButton = () => {

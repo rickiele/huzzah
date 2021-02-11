@@ -47,7 +47,6 @@ const RewardAdd = (props) => {
           })
       })
       props.onHide()
-
   }
 
   /* Render the Add Reward Modal */
@@ -65,7 +64,7 @@ const RewardAdd = (props) => {
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <Form.Group controlId="form__addRewardName">
+          <Form.Group>
             <Form.Label>
               <h5>Reward Name</h5>
             </Form.Label>

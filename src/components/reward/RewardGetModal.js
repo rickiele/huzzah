@@ -11,16 +11,12 @@ import "./Reward.css"
 
 const RewardGet = (props) => {
 
-  /* Modal states */
-  const [modalShow, setModalShow] = React.useState(false);
-
-
   const {habitId} = useParams(); 
 
   /* Context for Rewards and Rewards Given */
-  const { getRewards, deleteReward } = useContext(RewardContext)
+  const { getRewards } = useContext(RewardContext)
   const { getRewardsGiven, addRewardGiven } = useContext(RewardGivenContext)
-  const { habitActions, getHabitActionsOnly, deleteHabitActions, getHabitActionsById } = useContext(HabitActionsContext)
+  const { habitActions, getHabitActionsOnly, deleteHabitActions } = useContext(HabitActionsContext)
 
 
   /* Get the Rewards and then the Rewards Given and the habit actions */
