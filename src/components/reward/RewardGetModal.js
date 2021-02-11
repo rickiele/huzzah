@@ -24,6 +24,7 @@ const RewardGet = (props) => {
 
 
   /* Get the Rewards and then the Rewards Given and the habit actions */
+  // getRewardsGiven is a reference - not invoked because no ()
 	useEffect(() => {
 		getRewards()
 		.then(getRewardsGiven)

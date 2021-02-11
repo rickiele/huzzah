@@ -32,18 +32,22 @@ const RewardAdd = (props) => {
      setReward(newReward)
    }
 
-   /* Save reward - on click */
+  /* Save reward - on click */
+  //  Reset state setReward
    const handleSaveReward = () => {
     setIsLoading(true);
       //POST - add
-      addReward({
-          id: reward.id,
-          userId: currentUser,
-          name: reward.name,
-          location: reward.location,
-          url: reward.url
+      addReward(reward)
+      .then(() => { 
+          setReward({
+            userId: currentUser,
+            name: "",
+            location: "",
+            url: ""
+          })
       })
       props.onHide()
+
   }
 
   /* Render the Add Reward Modal */

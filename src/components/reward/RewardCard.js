@@ -17,7 +17,7 @@ export const RewardCard = ({ reward }) => (
 				</Card.Body>
 			</Col>
 			<Col>
-				{/* Edit Reward Button and Modal */}
+				{/* Edit Reward Button and Modal -- Is props.key - props.reward */}
 				<RewardEditModal key={reward.id} reward={reward}/>
 			</Col>
 		</Row>

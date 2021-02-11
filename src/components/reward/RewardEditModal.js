@@ -8,6 +8,7 @@ import { RewardContext } from "./RewardProvider"
 import "./Reward.css"
 
 const RewardEdit = (props) => {
+  // Props is explicitly defined here because we use it later because of the modal
   const { deleteReward, updateReward } = useContext(RewardContext)
   
   const currentUser = parseInt(localStorage.getItem("huzzah_user"))
@@ -94,6 +95,7 @@ const RewardEdit = (props) => {
   )
 }
 
+// {reward} = object destructuring 
 export const RewardEditModal = ( {reward} ) => {
 
   /* Modal states */

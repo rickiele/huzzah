@@ -1,0 +1,14 @@
+// Overwrite theme variables
+
+$primary: pink;
+$secondary: yellow;
+$dark: rgb(255, 0, 247);
+$light: rgb(0, 221, 255);
+$success: rgb(136, 230, 139);
+$info: black;
+$warning: rgb(133, 21, 21);
+$danger: rgb(255, 111, 0);
+
+
+//  Make sure import is at the bottom
+@import "~bootstrap/scss/bootstrap.scss"

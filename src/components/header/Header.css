@@ -2,8 +2,20 @@ header {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  background-color: greenyellow;
 }
 
 .logOutBtn {
   float: right;
+  border-radius: 5rem;
+  color: red;
+}
+
+.header__navigationContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+h1 {
+  font-weight: 900;
 }

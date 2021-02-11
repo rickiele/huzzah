@@ -49,15 +49,6 @@ export const HabitCard = ({ habit }) => {
 		deleteHabitActions(habit.id)
   }
 	
-
-	/* habitActionArray?.forEach(element => console.log(element)) */
-	//  console.log(habitActionArray, "what is this")
-	/* 
-	for (const habitActionObj of habitActionArray) {
-			handleDeleteHabitActions(habitActionObj.id)
-		}
-	*/
-	
 	/* Get Reward Button -- On Click */
 	const getRewardButton = () => {
 		history.push(`/huzzah/${habit.id}`)

@@ -7,13 +7,13 @@ import { RewardCard } from "./RewardCard"
 import { RewardAddModal } from "./RewardAddModal"
 import "./Reward.css"
 
-export const RewardList = () => {
+export const RewardList = (props) => {
 
    /* Context for rewards and users */
   const { rewards, getRewards } = useContext(RewardContext)
   const currentUser = parseInt(localStorage.getItem("huzzah_user"))
 
-  /* Get the rewards and then get the users */
+  /* Get the rewards */
   useEffect(() => {
 	  getRewards()
   }, [])
