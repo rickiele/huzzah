@@ -52,21 +52,21 @@ export const HabitCard = ({ habit }) => {
 
 	/* Render the habit cards and progress bars */ 
 	return (
-  <Card className="habits mb-3 " style={{ color: "#000"}}>
+  <Card className="habits mb-3" id="bootstrap"  style={{ color: "#000"}}>
 
 		<Row>
-			<Col className="habit__left">
+			<Col className="habit__left" sm={6} >
 				<Card.Body>
-					<Card.Title className="habit__name">
-						<h3>{habit.name}</h3>
+					<Card.Title className="habit__name" id="bootstrap">
+						{habit.name}
 					</Card.Title>
 				</Card.Body>
 			</Col>
-			<Col className="habit__right">
+			<Col className="habit__right" sm={4}>
 				{/* Show the Get Reward btn or Track Habit btn */}
 				{totalHabitActions === 7 ? 
 				<> 
-				<Button id="bootstrap" className="habit__getRewardBtn" onClick={getRewardButton}>
+				<Button id="bootstrap" variant="dark" className="habit__getRewardBtn" onClick={getRewardButton}>
 						Get Reward 
 				</Button> 
 					
@@ -78,7 +78,9 @@ export const HabitCard = ({ habit }) => {
 							Track Habit</Button> 
 				</>}
 			</Col>
+			<Col sm={2}>
 					<HabitEditModal key={habit.id} habit={habit}/>
+			</Col>
 		</Row>
 
 		<Row>

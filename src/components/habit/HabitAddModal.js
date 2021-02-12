@@ -83,8 +83,8 @@ export const HabitAddModal = () => {
   /* Render the Add Habit button */
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)} className="habits__addHabitBtn">
-        Add Habit
+      <Button variant="primary" id="bootstrap" onClick={() => setModalShow(true)} className="habits__addHabitBtn">
+        +
       </Button>
 
       <HabitAdd

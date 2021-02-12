@@ -1,8 +1,10 @@
 // Overwrite theme variables
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700;800;900&display=swap');
 
-$primary: pink;
-$secondary: yellow;
-$dark: rgb(255, 0, 247);
+
+$primary: #389270;
+$secondary: #29A09F;
+$dark: #FCBC31;
 $light: rgb(0, 221, 255);
 $success: rgb(136, 230, 139);
 $info: black;
@@ -11,12 +13,66 @@ $danger: rgb(255, 111, 0);
 
 #bootstrap.btn {
   border-radius: 10em;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
 }
 
-#bootstrap.progressBar {
-  height: 10rem;
-  color: red;
+#bootstrap.progress {
+  height: 3rem;
+  border-radius: 1rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  
 }
+
+#bootstrap.card-title {
+  font-size: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+#bootstrap.card {
+  border-radius: 1rem;
+  margin: 2rem;
+}
+
+#bootstrap.modal-content {
+  background-color: red !important;
+}
+
+#bootstrap.modal-header {
+  color: #0C3A53;
+  background-color: #F1F9FD;
+  font-family: 'Poppins', sans-serif;
+  padding: 2rem 2rem;
+}
+
+#bootstrap.modal-body {
+  color: #0C3A53;
+  background-color: #F1F9FD;
+  font-family: 'Poppins', sans-serif;
+  padding: 2rem;
+}
+
+#bootstrap.modal-footer {
+  color: #0C3A53;
+  background-color: #F1F9FD;
+  font-family: 'Poppins', sans-serif;
+}
+
+#bootstrap.modal-title {
+  color: #0C3A53;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+
+
+
 
 
 //  Make sure import is at the bottom

@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom"
 import { Modal, Button, Form } from "react-bootstrap"
 import { HabitContext } from "./HabitProvider"
 import "./Habit.css"
+// import EditButton from '../images/EditButton.png'
 
 const HabitEdit = (props) => {
 
@@ -49,21 +50,24 @@ const HabitEdit = (props) => {
 
   /* Render the Edit Habit Modal */
   return (
-    <Modal
+    <Modal id="bootstrap"
     {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-    >
-        <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
+        >
+
+        <Modal.Header closeButton id="bootstrap">
+            <Modal.Title id="contained-modal-title-vcenter" id="bootstrap">
             {props.habit.name}
             </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <h5>Habit Stats</h5>
-          <p>Date Started: {props.habit.timestamp}</p>
-          <Form>
+        <Modal.Body id="bootstrap">
+          <div className="form__habitStats">
+            <h5>Habit Stats</h5>
+            <p>Date Started: {props.habit.timestamp}</p>
+          </div>
+          <Form id="bootstrap">
             <Form.Group controlId="name">
               <Form.Label>
                 <h5>Edit Habit Name</h5>
@@ -74,9 +78,9 @@ const HabitEdit = (props) => {
             </Form.Group>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={handleDeleteHabit}>Delete Habit</Button>
-          <Button className="form__editHabitBtn"
+        <Modal.Footer id="bootstrap">
+          <Button className="form__deleteHabitBtn" id="bootstrap" onClick={handleDeleteHabit}>Delete Habit</Button>
+          <Button className="form__editHabitBtn" id="bootstrap"
             onClick={event => {
             event.preventDefault()
             handleEditHabit()
@@ -96,8 +100,9 @@ export const HabitEditModal = ( {habit} ) => {
   return (
     <>
       <Button variant="primary" 
-        onClick={() => setModalShow(true)} className="habits__editHabitBtn">
-        
+        onClick={() => setModalShow(true)} className="habits__editHabitBtn" id="bootstrap" >
+          Edit
+        {/* <img src={EditButton} alt="boohoo" className="img-responsive"/> */}
       </Button>
 
       <HabitEdit
