@@ -37,7 +37,7 @@ const HabitEdit = (props) => {
   const handleDeleteHabit = () => {
     deleteHabit(props.habit.id)
     .then(() => {
-      history.push("/")
+      history.push("/habits")
     })
   }
 

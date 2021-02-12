@@ -36,7 +36,7 @@ const RewardEdit = (props) => {
   const handleDeleteReward = () => {
     deleteReward(props.reward.id)
     .then(() => {
-      history.push("/habits")
+      history.push("/rewards")
     })
   }
 

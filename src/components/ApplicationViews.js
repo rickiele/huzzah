@@ -13,12 +13,7 @@ import { RewardScreen } from './reward/RewardScreen'
 export const ApplicationViews = () => {
     return (
         <>
-            {/* Render the home page.. what will the home page be? The dashboard maybe... */}
-            {/* <Route exact path="/">
-                <Home />
-            </Route> */}
-
-            {/* localhost:3000 -- Dashboard */}
+      
             <HabitActionTakenProvider>
             	<HabitProvider>
                 <RewardProvider>
