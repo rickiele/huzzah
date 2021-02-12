@@ -66,13 +66,13 @@ export const HabitCard = ({ habit }) => {
 				{/* Show the Get Reward btn or Track Habit btn */}
 				{totalHabitActions === 7 ? 
 				<> 
-				<Button className="habit__getRewardBtn" onClick={getRewardButton}>
+				<Button id="bootstrap" className="habit__getRewardBtn" onClick={getRewardButton}>
 						Get Reward 
 				</Button> 
 					
 				</> : 
 				<> 
-				<Button className="habit__trackHabitBtn" onClick={event => {
+				<Button className="habit__trackHabitBtn" id="bootstrap" onClick={event => {
 						event.preventDefault()
 						handleTrackHabit()}} >
 							Track Habit</Button> 

@@ -9,6 +9,15 @@ $info: black;
 $warning: rgb(133, 21, 21);
 $danger: rgb(255, 111, 0);
 
+#bootstrap.btn {
+  border-radius: 10em;
+}
+
+#bootstrap.progressBar {
+  height: 10rem;
+  color: red;
+}
+
 
 //  Make sure import is at the bottom
 @import "~bootstrap/scss/bootstrap.scss"
