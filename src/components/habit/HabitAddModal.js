@@ -43,19 +43,19 @@ const HabitAdd = (props) => {
   
   /* Render the Add Habit modal */
   return (
-      <Modal
+      <Modal id="bootstrap"
         {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Header closeButton id="bootstrap">
+          <Modal.Title id="contained-modal-title-vcenter" id="bootstrap">
             Add A Habit
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form>
+        <Modal.Body id="bootstrap">
+          <Form id="bootstrap">
             <Form.Group>
               <Form.Label>
                 <h5>Habit Name</h5>
@@ -66,7 +66,7 @@ const HabitAdd = (props) => {
             </Form.Group>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer id="bootstrap">
           <Button className="form_addNewHabitBtn" 
             onClick={handleSaveHabit}>
             Add New Habit</Button>

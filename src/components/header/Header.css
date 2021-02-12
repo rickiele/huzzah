@@ -3,6 +3,7 @@ header {
   flex-direction: column;
   margin-bottom: 20px;
   background-color: #F9F0C2;
+  padding: 2rem;
 }
 
 .logOutBtn {
@@ -12,4 +13,42 @@ header {
 .header__navigationContainer {
   display: flex;
   flex-direction: row;
+}
+
+.navbar__item {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  list-style: none;
+  margin-left: 2rem;
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 3.5rem;
+  color: #0C3A53;
+}
+
+#bootstrap a {
+  color: #0C3A53;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+#bootstrap a:hover {
+  color: #29A09F;
+  text-decoration: none;
+}
+
+#bootstrap a:active {
+  color: #EE592F;
+}
+
+.header__userLogout {
+  display: flex;
+  flex-direction: row;
+}
+
+.header__userDiv {
+  margin-right: 1rem;
 }

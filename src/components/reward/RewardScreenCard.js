@@ -7,18 +7,18 @@ import "./Reward.css"
 
 /* Render the reward cards */
 export const RewardScreenCard = ({ reward }) => (
-	<Card className="reward mb-3 " style={{ color: "#000"}}>
+	<Card className="reward" style={{ color: "#000"}} id="bootstrap" >
 		<Row>
-				<Card.Body>
-					<Card.Title className="reward__name">
+			<Col className="reward__left" sm={8}>
+				<Card.Body id="bootstrap">
+					<Card.Title className="reward__name" id="bootstrap">
 					 <h3>	{reward.name} at {reward.location} </h3>
 					</Card.Title>
 				</Card.Body>
-
-			<Col>
+			</Col>
+			<Col className="reward__right" sm={3}>
         {/* Get Reward Modal */}
 				<RewardGetModal key={reward.id} reward={reward}/>
-        
 			</Col>
 		</Row>
 	</Card>

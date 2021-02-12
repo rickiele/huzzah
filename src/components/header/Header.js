@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react"
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { Button, Col, Row } from "react-bootstrap"
 import { UserCard } from "../user/UserCard"
 import { UserContext } from "../user/UserProvider"
@@ -26,25 +26,37 @@ export const HeaderCard = () => {
         <>
         <header>
 					<Row>
-						<Col>
-							<h1>Huzzah</h1>
-							<h4>Daily Habit Tracker and Celebrator</h4>
+						<Col sm={2}>
+							<h1 className="logo">HUZZAH</h1>
 						</Col>
-						<Col className="header__navigationContainer">
-							<h4>Habits</h4>
-							<h4>Rewards</h4>
+						<Col className="header__navigationContainer" sm={6}>
+								<ul className="navbar">
+									<li className="navbar__item active" id="bootstrap">
+											<Link id="bootstrap" className="navbar__link" to="/habits" >
+												Habits
+											</Link>
+									</li>
+									<li className="navbar__item" id="bootstrap">
+											<Link className="navbar__link" to="/rewards">
+												Rewards
+											</Link>
+									</li>
+								</ul>
 						</Col>
-						<Col>
-							<Button onClick={handleLogOutBtn} className="logOutBtn">Log Out</Button>
+						<Col className="header__userLogout" sm={4}>
+							<div className="header__userDiv">
+							{ 
+									users.filter(u => u.id === currentUser).map(user => {
+									return <UserCard key={user.id} user={user} />
+									})
+							}
+							</div>
+							<div>
+							<Button onClick={handleLogOutBtn} className="logOutBtn" id="bootstrap">Log Out</Button>
+							</div>
 						</Col>
+						
 					</Row>
-						<h1> Hello
-						{ 
-								users.filter(u => u.id === currentUser).map(user => {
-								return <UserCard key={user.id} user={user} />
-								})
-						}
-						</h1>
 					
         </header>
         </>

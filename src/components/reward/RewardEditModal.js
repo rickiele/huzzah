@@ -36,7 +36,7 @@ const RewardEdit = (props) => {
   const handleDeleteReward = () => {
     deleteReward(props.reward.id)
     .then(() => {
-      history.push("/")
+      history.push("/habits")
     })
   }
 
@@ -49,42 +49,48 @@ const RewardEdit = (props) => {
 
   /* Render the Edit Reward Modal */
   return (
-  <Modal
+  <Modal id="bootstrap" 
     {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
     >
-    <Modal.Header closeButton>
-      <Modal.Title id="contained-modal-title-vcenter">
+    <Modal.Header closeButton id="bootstrap" >
+      <Modal.Title id="contained-modal-title-vcenter" id="bootstrap" >
         {props.reward.name}
       </Modal.Title>
     </Modal.Header>
-    <Modal.Body>
-      <Form>
+    <Modal.Body id="bootstrap" >
+      <Form id="bootstrap" >
         <Form.Group controlId="form__editRewardName">
-          <Form.Label>
-            <h5>Edit Reward Name</h5>
-          </Form.Label>
-          <Form.Control type="text" id="name" placeholder={props.reward.name}
-            onChange={handleControlledInputChange}/>
-          <Form.Label>
-            <h5>Edit Reward Location</h5>
-          </Form.Label>
-          <Form.Control type="text" id="location" placeholder={props.reward.location}
-            onChange={handleControlledInputChange}/>
+          <div id="bootstrap" className="form__rewardDiv">
+            <Form.Label>
+              <h5>Edit Reward Name</h5>
+            </Form.Label>
+            <Form.Control type="text" id="name" placeholder={props.reward.name}
+              onChange={handleControlledInputChange}/>
+          </div>
+          <div id="bootstrap" className="form__rewardDiv">
+            <Form.Label>
+              <h5>Edit Reward Location</h5>
+            </Form.Label>
+            <Form.Control type="text" id="location" placeholder={props.reward.location}
+              onChange={handleControlledInputChange}/>
+          </div>
+          <div id="bootstrap" className="form__rewardDiv">
           <Form.Label>
             <h5>Edit Reward URL</h5>
           </Form.Label>
           <Form.Control type="text" id="url" placeholder={props.reward.url}
             onChange={handleControlledInputChange}/>
+          </div>
         </Form.Group>
         </Form>
 
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={handleDeleteReward}>Delete Reward</Button>
-        <Button classname="form__editRewardBtn"
+      <Modal.Footer id="bootstrap" >
+        <Button id="bootstrap" onClick={handleDeleteReward}>Delete Reward</Button>
+        <Button id="bootstrap" classname="form__editRewardBtn"
           onClick={event => {
             event.preventDefault()
             handleEditReward()
@@ -104,9 +110,9 @@ export const RewardEditModal = ( {reward} ) => {
   /* Render the Edit Reward button */
   return (
     <>
-      <Button variant="primary" 
+      <Button variant="primary" id="bootstrap" 
         onClick={() => setModalShow(true)} className="rewards__editRewardBtn">
-        Edit Reward
+        Edit
       </Button>
 
       <RewardEdit

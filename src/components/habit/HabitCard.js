@@ -34,7 +34,7 @@ export const HabitCard = ({ habit }) => {
           habitId: habit.id,
           timestamp: habitActionTimestamp
       })
-      .then(() => history.push("/"))
+      .then(() => history.push("/habits"))
   }
 
 	
@@ -52,7 +52,7 @@ export const HabitCard = ({ habit }) => {
 
 	/* Render the habit cards and progress bars */ 
 	return (
-  <Card className="habits mb-3" id="bootstrap"  style={{ color: "#000"}}>
+  <Card className="habits mb-3" id="bootstrap" style={{ color: "#000"}}>
 
 		<Row>
 			<Col className="habit__left" sm={6} >

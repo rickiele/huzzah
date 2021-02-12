@@ -25,11 +25,13 @@ export const ApplicationViews = () => {
                   <RewardGivenProvider>
                     <UserProvider>
 
-                      <Route exact path="/">
+                      <Route exact path="/habits">
                           <HabitList />
-                          <RewardList />
                       </Route>
                         
+											<Route exact path="/rewards">
+													<RewardList />
+											</Route>
                         {/* You put :habitId(\d+) at the end of the URL to serve as a variable to hold the actual value 
                         that will be in the URL. For example, if the URL is http://localhost:3000/habits/detail/3, 
                         the value of 3 will be stored in that variable named habitId */}
