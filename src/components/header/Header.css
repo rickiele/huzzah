@@ -35,14 +35,17 @@ header {
   font-size: 2rem;
 }
 
+#bootstrap a.active {
+  color: #EE592F;
+}
+
 #bootstrap a:hover {
   color: #29A09F;
   text-decoration: none;
 }
 
-#bootstrap a:active {
-  color: #EE592F;
-}
+
+
 
 .header__userLogout {
   display: flex;

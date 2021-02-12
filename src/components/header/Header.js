@@ -36,7 +36,7 @@ export const HeaderCard = () => {
 												Habits
 											</Link>
 									</li>
-									<li className="navbar__item" id="bootstrap">
+									<li className="navbar__item active" id="bootstrap">
 											<Link className="navbar__link" to="/rewards">
 												Rewards
 											</Link>
