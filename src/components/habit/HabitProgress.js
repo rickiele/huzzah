@@ -27,6 +27,6 @@ export const HabitProgress = ({ habit }) => {
   /* Render the progress bar
      Round the number up */
   return (
-    <ProgressBar now={Math.round(currentProgress)} label={Math.round(currentProgress)} />
+    <ProgressBar id="bootstrap" variant="secondary" now={Math.round(currentProgress)} label={Math.round(currentProgress)} />
   )
 }

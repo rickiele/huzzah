@@ -1,7 +1,3 @@
-.h1, h1 {
-  font-size: 2.5rem;
-}
-
 fieldset {
   min-width: 0;
   padding: 1rem 0;
@@ -65,8 +61,4 @@ fieldset {
 .dialog {
   min-width: 15rem;
   min-height: 5rem;
-}
-
-a{
-  color: black !important;
 }

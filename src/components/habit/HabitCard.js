@@ -1,7 +1,7 @@
 /* PURPOSE: Individual Habit Card */
 
 import React, { useContext, useEffect, useState } from "react"
-import { useHistory, Link } from "react-router-dom" 
+import { useHistory } from "react-router-dom" 
 import { Button, Card, Col, Row } from "react-bootstrap"
 import { HabitContext } from "./HabitProvider"
 import { HabitActionsContext } from "./HabitActionTakenProvider"
@@ -34,7 +34,7 @@ export const HabitCard = ({ habit }) => {
           habitId: habit.id,
           timestamp: habitActionTimestamp
       })
-      .then(() => history.push("/"))
+      .then(() => history.push("/habits"))
   }
 
 	
@@ -44,20 +44,6 @@ export const HabitCard = ({ habit }) => {
 	const totalHabitActions = habitActionArray?.length
 	
 	
-	/* Delete habit actions array for habit */
-	const handleDeleteHabitActions = () => {
-		deleteHabitActions(habit.id)
-  }
-	
-
-	/* habitActionArray?.forEach(element => console.log(element)) */
-	//  console.log(habitActionArray, "what is this")
-	/* 
-	for (const habitActionObj of habitActionArray) {
-			handleDeleteHabitActions(habitActionObj.id)
-		}
-	*/
-	
 	/* Get Reward Button -- On Click */
 	const getRewardButton = () => {
 		history.push(`/huzzah/${habit.id}`)
@@ -66,33 +52,35 @@ export const HabitCard = ({ habit }) => {
 
 	/* Render the habit cards and progress bars */ 
 	return (
-  <Card className="habits mb-3 " style={{ color: "#000"}}>
+  <Card className="habits mb-3" id="bootstrap" style={{ color: "#000"}}>
 
 		<Row>
-			<Col className="habit__left">
+			<Col className="habit__left" sm={6} >
 				<Card.Body>
-					<Card.Title className="habit__name">
-						<h3>{habit.name}</h3>
+					<Card.Title className="habit__name" id="bootstrap">
+						{habit.name}
 					</Card.Title>
 				</Card.Body>
 			</Col>
-			<Col className="habit__right">
+			<Col className="habit__right" sm={4}>
 				{/* Show the Get Reward btn or Track Habit btn */}
 				{totalHabitActions === 7 ? 
 				<> 
-				<Button className="habit__getRewardBtn" onClick={getRewardButton}>
+				<Button id="bootstrap" variant="dark" className="habit__getRewardBtn" onClick={getRewardButton}>
 						Get Reward 
 				</Button> 
 					
 				</> : 
 				<> 
-				<Button className="habit__trackHabitBtn" onClick={event => {
+				<Button className="habit__trackHabitBtn" id="bootstrap" onClick={event => {
 						event.preventDefault()
 						handleTrackHabit()}} >
 							Track Habit</Button> 
 				</>}
 			</Col>
+			<Col sm={2}>
 					<HabitEditModal key={habit.id} habit={habit}/>
+			</Col>
 		</Row>
 
 		<Row>

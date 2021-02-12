@@ -1,7 +1,6 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { useContext, useState } from "react"
 import { Modal, Button, Form } from "react-bootstrap"
-import { useHistory } from "react-router-dom" 
 import { HabitContext } from "./HabitProvider"
 import "./Habit.css"
 
@@ -12,12 +11,11 @@ const HabitAdd = (props) => {
   const currentUser = parseInt(localStorage.getItem("huzzah_user"))
 
   const [isLoading, setIsLoading] = useState(true);
-  const history = useHistory();
   
   const [habit, setHabit] = useState({
     userId: currentUser,
     name: "",
-    timestamp: ""
+    timestamp: habitStart
   })
 
   const handleControlledInputChange = (event) => {
@@ -29,36 +27,36 @@ const HabitAdd = (props) => {
   }
 
   /* Save Habit -- on click */
-  const [modalShow, setModalShow] = React.useState(false);
-
   const handleSaveHabit = () => {
       setIsLoading(true);
         //POST - add
-        addHabit({
-            id: habit.id,
+        addHabit(habit)
+        .then(() => { 
+          setHabit({
             userId: currentUser,
-            name: habit.name,
+            name: "",
             timestamp: habitStart
+          })
         })
         props.onHide()
   }
-
+  
   /* Render the Add Habit modal */
   return (
-      <Modal
+      <Modal id="bootstrap"
         {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Header closeButton id="bootstrap">
+          <Modal.Title id="contained-modal-title-vcenter" id="bootstrap">
             Add A Habit
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="form_addHabitName">
+        <Modal.Body id="bootstrap">
+          <Form id="bootstrap">
+            <Form.Group>
               <Form.Label>
                 <h5>Habit Name</h5>
               </Form.Label>
@@ -68,7 +66,7 @@ const HabitAdd = (props) => {
             </Form.Group>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer id="bootstrap">
           <Button className="form_addNewHabitBtn" 
             onClick={handleSaveHabit}>
             Add New Habit</Button>
@@ -85,8 +83,8 @@ export const HabitAddModal = () => {
   /* Render the Add Habit button */
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)} className="habits__addHabitBtn">
-        Add Habit
+      <Button variant="primary" id="bootstrap" onClick={() => setModalShow(true)} className="habits__addHabitBtn">
+        +
       </Button>
 
       <HabitAdd

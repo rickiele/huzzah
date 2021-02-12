@@ -11,19 +11,16 @@ import "./Reward.css"
 
 const RewardGet = (props) => {
 
-  /* Modal states */
-  const [modalShow, setModalShow] = React.useState(false);
-
-
   const {habitId} = useParams(); 
 
   /* Context for Rewards and Rewards Given */
-  const { getRewards, deleteReward } = useContext(RewardContext)
+  const { getRewards } = useContext(RewardContext)
   const { getRewardsGiven, addRewardGiven } = useContext(RewardGivenContext)
-  const { habitActions, getHabitActionsOnly, deleteHabitActions, getHabitActionsById } = useContext(HabitActionsContext)
+  const { habitActions, getHabitActionsOnly, deleteHabitActions } = useContext(HabitActionsContext)
 
 
   /* Get the Rewards and then the Rewards Given and the habit actions */
+  // getRewardsGiven is a reference - not invoked because no ()
 	useEffect(() => {
 		getRewards()
 		.then(getRewardsGiven)
@@ -65,30 +62,30 @@ const RewardGet = (props) => {
     handleRewardGiven()
     
     /* Back to home page */
-    history.push("/")
+    history.push("/habits")
   }
 
   /* Render the Get Reward modal */
   return (
-    <Modal
+    <Modal id="bootstrap"
     {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
     >
-        <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-              <h3 className="rewardScreen__modalTitle">Treat Yourself To</h3>
+        <Modal.Header closeButton id="bootstrap">
+            <Modal.Title id="contained-modal-title-vcenter" id="bootstrap">
+             Treat yourself with...
             </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body id="bootstrap">
               <h3>{props.reward.name} at {props.reward.location}?</h3>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={yesToReward}>
+        <Modal.Footer id="bootstrap">
+          <Button onClick={yesToReward} id="bootstrap">
             Yes
           </Button>
-          <Button onClick={props.onHide}> No</Button>
+          <Button onClick={props.onHide} id="bootstrap"> No</Button>
          </Modal.Footer>
     </Modal>
   )
@@ -102,7 +99,7 @@ export const RewardGetModal = ( {reward} ) => {
   /* Render the Get Reward button */
   return (
     <>
-      <Button variant="primary" 
+      <Button variant="primary" id="bootstrap"
         onClick={() => setModalShow(true)} className="rewardScreen__getRewardBtn">
         Get Reward
       </Button>

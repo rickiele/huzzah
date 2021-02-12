@@ -21,10 +21,10 @@ export const HabitList = () => {
   /* Render a list of all the habits */
   return (
     <Container className="habits">
-      <div className="habits__addHabitContainer">
-        <HabitAddModal />
-        <h2>Habits</h2>
-      </div>
+        <div className="habits__addHabitContainer">
+          <HabitAddModal />
+          <h2>Daily Habits</h2>
+        </div>
       <Col className="habits__list">
         {/* Habit Cards are being rendered here*/}
         { 

@@ -1,9 +1,4 @@
-.habits {
-  border: 2px solid black;
-  margin: 1em;
-  flex-grow: 6;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 .habit {
     display: flex;
     border-radius: 0.5em;
@@ -20,25 +15,45 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
+} 
 
-.habits__addHabitBtn{
+#bootstrap.habits__addHabitBtn{
   float: right;
+  width: 8rem;
+  font-size: 2rem !important;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  color: #0C3A53;
 }
 
 .habits__addHabitContainer {
-  margin: 2em;
+  margin: 3rem;
 }
 
 .habit__deleteHabitBtn{
   float: right;
 }
 
-.progress-bar {
-  background-color: #349aac !important;
+.habits__editHabitBtn {
+  float: right;
+  margin: 0.5rem;
 }
 
-.habits__editHabitBtn {
-  width: 20px !important;
-  height: 20px !important;
+h2 {
+  color:white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600 !important;
+  font-size: 4rem !important;
+}
+
+#bootstrap.habit__getRewardBtn{
+  float: right;
+}
+
+#bootstrap.habit__trackHabitBtn{
+  float: right;
+}
+
+.form__habitStats {
+  margin-bottom: 2rem;
 }

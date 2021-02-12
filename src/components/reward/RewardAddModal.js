@@ -32,36 +32,39 @@ const RewardAdd = (props) => {
      setReward(newReward)
    }
 
-   /* Save reward - on click */
+  /* Save reward - on click */
+  //  Reset state setReward
    const handleSaveReward = () => {
     setIsLoading(true);
       //POST - add
-      addReward({
-          id: reward.id,
-          userId: currentUser,
-          name: reward.name,
-          location: reward.location,
-          url: reward.url
+      addReward(reward)
+      .then(() => { 
+          setReward({
+            userId: currentUser,
+            name: "",
+            location: "",
+            url: ""
+          })
       })
       props.onHide()
   }
 
   /* Render the Add Reward Modal */
   return (
-    <Modal
+    <Modal id="bootstrap"
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
+      <Modal.Header closeButton id="bootstrap">
+        <Modal.Title id="contained-modal-title-vcenter" id="bootstrap">
           Add A Reward
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <Form>
-          <Form.Group controlId="form__addRewardName">
+      <Modal.Body id="bootstrap">
+        <Form id="bootstrap">
+          <Form.Group>
             <Form.Label>
               <h5>Reward Name</h5>
             </Form.Label>
@@ -83,8 +86,8 @@ const RewardAdd = (props) => {
             </Form.Group>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={event => {
+      <Modal.Footer id="bootstrap">
+        <Button id="bootstrap" onClick={event => {
                 event.preventDefault()
                 handleSaveReward()
                 }}>
@@ -102,8 +105,8 @@ export const RewardAddModal = () => {
   /* Render the Add Reward button */
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)} className="rewards__addRewardBtn">
-        Add Reward
+      <Button id="bootstrap" variant="primary" onClick={() => setModalShow(true)} className="rewards__addRewardBtn">
+        +
       </Button>
 
       <RewardAdd
