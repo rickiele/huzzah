@@ -1,5 +1,6 @@
 import React, { useRef } from "react"
 import { useHistory } from "react-router-dom"
+import { Button } from "react-bootstrap"
 import "./Login.css"
 
 export const Register = (props) => {
@@ -56,7 +57,7 @@ export const Register = (props) => {
             </dialog>
 
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Register for Huzzah</h1>
+                <h1 className="form__registerTagline">Register for Huzzah</h1>
                 <fieldset>
                     <label htmlFor="firstName"> First Name </label>
                     <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
@@ -70,7 +71,7 @@ export const Register = (props) => {
                     <input ref={email} type="email" name="email" className="form-control" placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
-                    <button type="submit"> Sign in </button>
+                    <Button type="submit" id="bootstrap" className="login__signInBtn"> Sign in </Button>
                 </fieldset>
             </form>
         </main>

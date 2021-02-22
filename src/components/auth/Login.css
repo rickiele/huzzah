@@ -11,7 +11,6 @@ fieldset {
   text-align: left;
 }
 
-.form--login > fieldset > input[type="email"],
 .form--login > fieldset > input[type="password"] {
   width: 25em;
 }
@@ -40,6 +39,9 @@ fieldset {
 
 .container--login {
   text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: #0C3A53;
 }
 
 .form--login {
@@ -48,9 +50,15 @@ fieldset {
   z-index: 1;
   min-height: 25rem;
   min-width: 45rem;
-  background-color: hsla(0,0%,100%,0.40);
+  background-color: #F9F0C1;
   background-blend-mode: overlay;
   background-repeat: no-repeat;
+  border-radius: 1rem;
+  margin: 3rem;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: #0C3A53;
 }
 
 .button--close {
@@ -61,4 +69,35 @@ fieldset {
 .dialog {
   min-width: 15rem;
   min-height: 5rem;
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 3.5rem;
+  color: #0C3A53;
+}
+
+#tagline {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  margin-bottom: 4rem;
+  font-size: 2rem !important;
+  color: #0C3A53;
+}
+
+.form__registerTagline {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #0C3A53;
+  margin-bottom: 4rem;
+}
+
+.login__signInBtn {
+  margin-top: 1rem;
+  float: right;
+}
+
+.form-control {
+  margin-bottom: 1.5rem;
 }
