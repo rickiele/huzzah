@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react"
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory, Link, NavLink } from 'react-router-dom'
 import { Button, Col, Row } from "react-bootstrap"
 import { UserCard } from "../user/UserCard"
 import { UserContext } from "../user/UserProvider"
@@ -26,20 +26,33 @@ export const HeaderCard = () => {
         <>
         <header>
 					<Row>
-						<Col sm={2}>
-							<h1 className="logo">HUZZAH</h1>
+						<Col sm={3}>
+							<div className="header__logoContainer">
+								<div className="header__circle shake"></div>
+								<h1 className="logo">HUZZAH</h1>
+							</div>
 						</Col>
-						<Col className="header__navigationContainer" sm={6}>
+						<Col className="header__navigationContainer" sm={5}>
 								<ul className="navbar">
-									<li className="navbar__item active" id="bootstrap">
-											<Link id="bootstrap" className="navbar__link" to="/habits" >
+									<li className="navbar__item" id="bootstrap">
+											<NavLink id="bootstrap" 
+											className="navbar__link" 
+											to="/habits" 
+											activeStyle={{
+												color: "#F96632"
+											}}>
 												Habits
-											</Link>
+											</NavLink>
 									</li>
-									<li className="navbar__item active" id="bootstrap">
-											<Link className="navbar__link" to="/rewards">
+									<li className="navbar__item" id="bootstrap">
+											<NavLink className="navbar__link" 
+											to="/rewards"
+											activeStyle={{
+												color: "#F96632"
+											}}
+											>
 												Rewards
-											</Link>
+											</NavLink>
 									</li>
 								</ul>
 						</Col>
@@ -51,7 +64,7 @@ export const HeaderCard = () => {
 									})
 							}
 							</div>
-							<div>
+							<div className="header__logOutBtn">
 							<Button onClick={handleLogOutBtn} className="logOutBtn" id="bootstrap">Log Out</Button>
 							</div>
 						</Col>
